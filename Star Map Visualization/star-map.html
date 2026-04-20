@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Skies Across Cultures: Star Map</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d1117; font-family: Arial, sans-serif; padding: 8px; color: #ccc; }
+  h2 { text-align: center; color: #f0f0f0; font-family: Georgia, serif; font-size: 20px; margin-bottom: 4px; }
+  .subtitle { text-align: center; color: #888; font-size: 12px; margin-bottom: 10px; }
+  .layout { display: flex; gap: 8px; align-items: flex-start; }
+  .culture-list {
+    flex: 0 0 180px; background: #161b22; border-radius: 8px;
+    padding: 10px; display: flex; flex-direction: column;
+  }
+  .culture-scroll { overflow-y: auto; max-height: 400px; flex: 1; }
+  .culture-search {
+    width: 100%; padding: 5px 8px; margin-bottom: 6px;
+    border-radius: 6px; border: 1px solid #2d333b;
+    background: #0d1117; color: #ccc; font-size: 12px; outline: none;
+  }
+  .culture-search:focus { border-color: #f5c518; }
+  .culture-stat {
+    font-size: 11px; color: #888; margin-top: 6px;
+    padding: 6px 8px; background: #0d1117; border-radius: 6px;
+    line-height: 1.5; display: none;
+  }
+  .culture-stat.visible { display: block; }
+  .culture-list h3 { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .culture-item {
+    padding: 5px 8px; border-radius: 6px; cursor: pointer;
+    font-size: 12px; color: #ccc; margin-bottom: 2px; transition: background 0.15s;
+  }
+  .culture-item:hover { background: #21262d; color: #f0f0f0; }
+  .culture-item.active { background: #f5c518; color: #0d1117; font-weight: bold; }
+  .reset-btn {
+    width: 100%; margin-top: 8px; padding: 5px; border-radius: 6px;
+    border: 1px solid #444; background: transparent; color: #888;
+    cursor: pointer; font-size: 12px; transition: all 0.15s;
+  }
+  .reset-btn:hover { border-color: #888; color: #ccc; }
+  .con-name-box {
+    padding: 8px 16px; border-radius: 6px; max-width: 700px;
+    margin: 0 auto 12px auto; text-align: center;
+    background: #161b22; border: 1px solid #444;
+    font-size: 12px; color: #888; line-height: 1.6;
+  }
+  .con-name-box.active { border-color: #f5c518; color: #f5c518; }
+  .starmap-wrap { flex: 1; }
+  .chart-wrap { display: flex; justify-content: center; }
+</style>
+</head>
+<body>
+
+<div style="padding-left:180px;">
+<h2>Skies Across Cultures: Star Map</h2>
+<p class="subtitle">Explore 1,068 stars across 40 sky cultures · Click a culture to see its constellations · Click a star to discover which cultures mapped it</p>
+<div id="con-name-box" class="con-name-box">Select a culture from the left to highlight its constellation lines &nbsp;·&nbsp; In Show All mode, click any star to see every culture that mapped it</div>
+</div>
+
+<div class="layout">
+  <div class="culture-list">
+    <h3>Cultures</h3>
+    <input class="culture-search" id="culture-search" type="text" placeholder="Search cultures..." oninput="filterCultures(this.value)">
+    <button class="reset-btn" onclick="resetAll()">Show All</button>
+    <button class="reset-btn" onclick="resetSelection()" style="margin-top:4px;">Reset Selection</button>
+    <div class="culture-scroll"><div id="culture-items"></div></div>
+  </div>
+  <div class="starmap-wrap">
+    <div class="chart-wrap"><div id="starmap"></div></div>
+  </div>
+</div>
+<div id="culture-stat" class="culture-stat" style="max-width:700px;margin:8px auto 0 auto;text-align:center;"></div>
+
+<script>
+let RAW = null;
+let selectedCulture = null;
+let selectedStarId = null;
+
+// Orange is the "selected constellation" color throughout this file
+const SEL_COLOR = '#ff9500';
+
+function selectCulture(culture) {
+  const sameCulture = selectedCulture === culture;
+  selectedCulture = culture;
+  selectedStarId = null;
+  if (sameCulture) {
+    Plotly.react("starmap", buildTraces(), buildLayout(), { displayModeBar: false });
+    updateStat();
+    return;
+  }
+  hideConName();
+  document.querySelectorAll(".culture-item").forEach(el => el.classList.remove("active"));
+  if (culture) {
+    const el = document.getElementById("cult-" + CSS.escape(culture));
+    if (el) { el.classList.add("active"); el.scrollIntoView({ block: "nearest" }); }
+  }
+  if (RAW) { render(); updateStat(); }
+}
+
+function filterCultures(query) {
+  const q = query.toLowerCase();
+  document.querySelectorAll('.culture-item').forEach(el => {
+    el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+function updateStat() {
+  const box = document.getElementById('con-name-box');
+  if (!selectedCulture) { box.classList.remove('visible'); return; }
+  const stars = (RAW.culture_stars[selectedCulture] || []).length;
+  const cons = (RAW.culture_constellations[selectedCulture] || []).length;
+  box.innerHTML = '<strong style="color:#f5c518">' + selectedCulture + '</strong>'
+    + ' &nbsp;·&nbsp; ' + stars + ' stars &nbsp;·&nbsp; ' + cons + ' constellations'
+    + '<br><span style="color:#666;font-size:11px">Click any star to highlight the constellation it belongs to &nbsp;·&nbsp; Click the culture name again to reset</span>';
+  box.classList.add('active');
+}
+
+function resetSelection() {
+  selectedStarId = null;
+  document.querySelectorAll(".con-link").forEach(e => {
+    e.style.color = '#ccc';
+    e.style.borderBottom = '1px dashed #888';
+  });
+  hideConName();
+  if (RAW) Plotly.react("starmap", buildTraces(), buildLayout(), { displayModeBar: false });
+}
+
+function resetAll() {
+  selectedCulture = null;
+  selectedStarId = null;
+  document.querySelectorAll(".culture-item").forEach(el => el.classList.remove("active"));
+  hideConName();
+  document.getElementById('culture-stat').classList.remove('visible');
+  document.getElementById('culture-search').value = '';
+  filterCultures('');
+  if (RAW) render();
+}
+
+function showConName(content) {
+  const box = document.getElementById("con-name-box");
+  if (selectedCulture && RAW) {
+    const stars = (RAW.culture_stars[selectedCulture] || []).length;
+    const cons = (RAW.culture_constellations[selectedCulture] || []).length;
+    const statLine = '<strong style="color:#f5c518">' + selectedCulture + '</strong>'
+      + ' &nbsp;·&nbsp; ' + stars + ' stars &nbsp;·&nbsp; ' + cons + ' constellations';
+    box.innerHTML = statLine + '<br>' + content;
+  } else {
+    box.innerHTML = content;
+  }
+  box.classList.add("active");
+}
+
+function hideConName() {
+  const box = document.getElementById("con-name-box");
+  if (!box) return;
+  box.classList.remove("active");
+  box.innerHTML = "Select a culture from the left to highlight its constellation lines &nbsp;&middot;&nbsp; In Show All mode, click any star to see every culture that mapped it";
+}
+
+let starByCoord = {};
+
+function buildStarConMap() {
+  if (!selectedCulture) return {};
+  const constellations = RAW.culture_constellations[selectedCulture] || [];
+  const map = {};
+  constellations.forEach((con, idx) => {
+    con.segments.forEach(seg => {
+      seg.x.forEach((x, i) => {
+        if (x === null) return;
+        const key = x.toFixed(4) + ',' + seg.y[i].toFixed(4);
+        const sid = starByCoord[key];
+        if (sid) map[sid] = idx;
+      });
+    });
+  });
+  return map;
+}
+
+function getHighlightedStarIds() {
+  if (!selectedStarId || selectedCulture) return new Set();
+  const cons = RAW.star_to_cons[selectedStarId] || [];
+  const highlighted = new Set([selectedStarId]);
+  cons.forEach(c => {
+    const constellations = RAW.culture_constellations[c.culture] || [];
+    constellations.forEach(con => {
+      if (con.english === c.english && con.native === c.native) {
+        con.segments.forEach(seg => {
+          seg.x.forEach((x, i) => {
+            if (x === null) return;
+            const key = x.toFixed(4) + ',' + seg.y[i].toFixed(4);
+            const sid = starByCoord[key];
+            if (sid) highlighted.add(sid);
+          });
+        });
+      }
+    });
+  });
+  return highlighted;
+}
+
+function buildTraces() {
+  const traces = [];
+  const activeStarIds = selectedCulture ? new Set(RAW.culture_stars[selectedCulture] || []) : null;
+  const constellations = selectedCulture ? (RAW.culture_constellations[selectedCulture] || []) : [];
+  const starConMap = buildStarConMap();
+
+  let selectedConIdx = null;
+  if (selectedCulture && selectedStarId) {
+    selectedConIdx = starConMap[selectedStarId] !== undefined ? starConMap[selectedStarId] : null;
+  }
+
+  const allModeHighlighted = (!selectedCulture && selectedStarId) ? getHighlightedStarIds() : new Set();
+
+  const bgStars = activeStarIds
+    ? RAW.stars.filter(s => !activeStarIds.has(s.id))
+    : (selectedStarId && !selectedCulture ? RAW.stars.filter(s => !allModeHighlighted.has(s.id)) : RAW.stars);
+
+  traces.push({
+    type: 'scatter', mode: 'markers', showlegend: false,
+    x: bgStars.map(s => s.ra), y: bgStars.map(s => s.dec),
+    marker: {
+      size: bgStars.map(s => s.mag != null ? Math.max(2, 5 - s.mag * 0.4) : 2),
+      color: '#ffffff',
+      opacity: (activeStarIds || (selectedStarId && !selectedCulture)) ? 0.07 : 0.55,
+    },
+    customdata: bgStars.map(s => [s.id, s.mag != null ? s.mag.toFixed(2) : 'N/A']),
+    hovertemplate: '<b>%{customdata[0]}</b><br>Mag: %{customdata[1]}<extra></extra>',
+  });
+
+  // Show-all mode: all constellations for selected star
+  if (!selectedCulture && selectedStarId) {
+    const cons = RAW.star_to_cons[selectedStarId] || [];
+    cons.forEach(c => {
+      const cultureConstellations = RAW.culture_constellations[c.culture] || [];
+      const con = cultureConstellations.find(cc => cc.english === c.english && cc.native === c.native);
+      if (!con) return;
+      const lineX = [], lineY = [];
+      con.segments.forEach(seg => { lineX.push(...seg.x); lineY.push(...seg.y); });
+      traces.push({
+        type: 'scatter', mode: 'lines', showlegend: false,
+        x: lineX, y: lineY,
+        line: { color: 'rgba(0,212,255,0.6)', width: 1.8 },
+        hoverinfo: 'skip',
+      });
+    });
+
+    const hlStars = RAW.stars.filter(s => allModeHighlighted.has(s.id));
+    traces.push({
+      type: 'scatter', mode: 'markers', showlegend: false,
+      x: hlStars.map(s => s.ra), y: hlStars.map(s => s.dec),
+      marker: {
+        size: hlStars.map(s => s.mag != null ? Math.max(4, 9 - s.mag * 0.5) : 4),
+        color: '#00d4ff', opacity: 0.95,
+        line: { width: 0.5, color: '#fff' }
+      },
+      customdata: hlStars.map(s => [s.id, s.mag != null ? s.mag.toFixed(2) : 'N/A']),
+      hovertemplate: '<b>%{customdata[0]}</b><br>Mag: %{customdata[1]}<extra></extra>',
+    });
+  }
+
+  // Culture mode lines + stars
+  if (activeStarIds) {
+    constellations.forEach((con, idx) => {
+      if (idx === selectedConIdx) return;
+      const lineX = [], lineY = [];
+      con.segments.forEach(seg => { lineX.push(...seg.x); lineY.push(...seg.y); });
+      if (!lineX.length) return;
+      const isTiny = con.segments.length === 1;
+      const lineColor = selectedConIdx !== null
+        ? (isTiny ? 'rgba(245,197,24,0.3)' : 'rgba(245,197,24,0.15)')
+        : (isTiny ? 'rgba(245,197,24,0.8)' : 'rgba(245,197,24,0.35)');
+      traces.push({
+        type: 'scatter', mode: 'lines', showlegend: false,
+        x: lineX, y: lineY,
+        line: { color: lineColor, width: isTiny ? 2.5 : 1 },
+        hoverinfo: 'skip',
+      });
+    });
+
+    if (selectedConIdx !== null && constellations[selectedConIdx]) {
+      const con = constellations[selectedConIdx];
+      const lineX = [], lineY = [];
+      con.segments.forEach(seg => { lineX.push(...seg.x); lineY.push(...seg.y); });
+      traces.push({
+        type: 'scatter', mode: 'lines', showlegend: false,
+        x: lineX, y: lineY,
+        line: { color: '#00d4ff', width: 2.5 },
+        hoverinfo: 'skip',
+      });
+    }
+
+    const activeStars = RAW.stars.filter(s => activeStarIds.has(s.id));
+    const normalStars = activeStars.filter(s => selectedConIdx === null || starConMap[s.id] !== selectedConIdx);
+    const selStars = activeStars.filter(s => selectedConIdx !== null && starConMap[s.id] === selectedConIdx);
+
+    if (normalStars.length) {
+      traces.push({
+        type: 'scatter', mode: 'markers', showlegend: false,
+        x: normalStars.map(s => s.ra), y: normalStars.map(s => s.dec),
+        marker: {
+          size: normalStars.map(s => s.mag != null ? Math.max(3, 8 - s.mag * 0.5) : 3),
+          color: '#f5c518', opacity: selectedConIdx !== null ? 0.3 : 0.9,
+          line: { width: 0.5, color: '#fff' }
+        },
+        customdata: normalStars.map(s => [s.id, s.mag != null ? s.mag.toFixed(2) : 'N/A']),
+        hovertemplate: '<b>%{customdata[0]}</b><br>Mag: %{customdata[1]}<extra></extra>',
+      });
+    }
+    if (selStars.length) {
+      traces.push({
+        type: 'scatter', mode: 'markers', showlegend: false,
+        x: selStars.map(s => s.ra), y: selStars.map(s => s.dec),
+        marker: {
+          size: selStars.map(s => s.mag != null ? Math.max(5, 10 - s.mag * 0.5) : 5),
+          color: '#00d4ff', opacity: 1,
+          line: { width: 1, color: '#fff' }
+        },
+        customdata: selStars.map(s => [s.id, s.mag != null ? s.mag.toFixed(2) : 'N/A']),
+        hovertemplate: '<b>%{customdata[0]}</b><br>Mag: %{customdata[1]}<extra></extra>',
+      });
+    }
+
+    traces.push({
+      type: 'scatter', mode: 'markers', showlegend: false,
+      x: activeStars.map(s => s.ra), y: activeStars.map(s => s.dec),
+      marker: { size: 14, color: 'rgba(0,0,0,0)', opacity: 0 },
+      customdata: activeStars.map(s => [s.id, s.mag != null ? s.mag.toFixed(2) : 'N/A']),
+      hovertemplate: '<b>%{customdata[0]}</b><br>Mag: %{customdata[1]}<extra></extra>',
+    });
+  }
+
+  if (!selectedCulture) {
+    traces.push({
+      type: 'scatter', mode: 'markers', showlegend: false,
+      x: RAW.stars.map(s => s.ra), y: RAW.stars.map(s => s.dec),
+      marker: { size: 10, color: 'rgba(0,0,0,0)', opacity: 0 },
+      customdata: RAW.stars.map(s => [s.id, s.mag != null ? s.mag.toFixed(2) : 'N/A']),
+      hovertemplate: '<b>%{customdata[0]}</b><br>Mag: %{customdata[1]}<extra></extra>',
+    });
+  }
+
+  return traces;
+}
+
+function getWidth() { return window.innerWidth - 8 - 180 - 8 - 8; }
+
+function buildLayout() {
+  const w = getWidth();
+  return {
+    paper_bgcolor: '#0d1117', plot_bgcolor: '#0d1117',
+    width: w, height: 540,
+    margin: { l: 40, r: 10, t: 10, b: 50 },
+    xaxis: {
+      title: 'Right Ascension (°)', range: [360, 0], gridcolor: '#1e2a3a', zeroline: false,
+      tickfont: { size: 10, color: '#666' }, titlefont: { color: '#666', size: 11 },
+    },
+    yaxis: {
+      title: 'Declination (°)', range: [-90, 90], gridcolor: '#1e2a3a', zeroline: false,
+      tickfont: { size: 10, color: '#666' }, titlefont: { color: '#666', size: 11 },
+    },
+  };
+}
+
+function renderWithHighlight(con) {
+  if (!con) { render(); return; }
+
+  const allCons = RAW.star_to_cons[selectedStarId] || [];
+
+  const allHighlightedStarIds = new Set([selectedStarId]);
+  allCons.forEach(c => {
+    const cultureConstellations = RAW.culture_constellations[c.culture] || [];
+    const matched = cultureConstellations.find(cc => cc.english === c.english && cc.native === c.native);
+    if (matched) {
+      matched.segments.forEach(seg => {
+        seg.x.forEach((x, i) => {
+          if (x === null) return;
+          const key = x.toFixed(4) + ',' + seg.y[i].toFixed(4);
+          const sid = starByCoord[key];
+          if (sid) allHighlightedStarIds.add(sid);
+        });
+      });
+    }
+  });
+
+  const cultureConstellations = RAW.culture_constellations[con.culture] || [];
+  const selectedCon = cultureConstellations.find(cc => cc.english === con.english && cc.native === con.native);
+  const selectedConStarIds = new Set();
+  const selectedLineX = [], selectedLineY = [];
+  if (selectedCon) {
+    selectedCon.segments.forEach(seg => {
+      selectedLineX.push(...seg.x); selectedLineY.push(...seg.y);
+      seg.x.forEach((x, i) => {
+        if (x === null) return;
+        const key = x.toFixed(4) + ',' + seg.y[i].toFixed(4);
+        const sid = starByCoord[key];
+        if (sid) selectedConStarIds.add(sid);
+      });
+    });
+  }
+
+  const traces = [];
+
+  // Background stars
+  const bgStars = RAW.stars.filter(s => !allHighlightedStarIds.has(s.id));
+  traces.push({
+    type: 'scatter', mode: 'markers', showlegend: false,
+    x: bgStars.map(s => s.ra), y: bgStars.map(s => s.dec),
+    marker: { size: bgStars.map(s => s.mag != null ? Math.max(2, 5 - s.mag * 0.4) : 2), color: '#ffffff', opacity: 0.07 },
+    customdata: bgStars.map(s => [s.id, s.mag != null ? s.mag.toFixed(2) : 'N/A']),
+    hovertemplate: '<b>%{customdata[0]}</b><br>Mag: %{customdata[1]}<extra></extra>',
+  });
+
+  // Other constellations for this star — cyan, dimmed
+  allCons.forEach(c => {
+    if (c.culture === con.culture && c.english === con.english && c.native === con.native) return;
+    const cc = (RAW.culture_constellations[c.culture] || []).find(x => x.english === c.english && x.native === c.native);
+    if (!cc) return;
+    const lx = [], ly = [];
+    cc.segments.forEach(seg => { lx.push(...seg.x); ly.push(...seg.y); });
+    traces.push({ type: 'scatter', mode: 'lines', showlegend: false, x: lx, y: ly,
+      line: { color: 'rgba(0,212,255,0.4)', width: 1 }, hoverinfo: 'skip' });
+  });
+
+  // Selected constellation lines — orange (SEL_COLOR)
+  if (selectedLineX.length) {
+    traces.push({ type: 'scatter', mode: 'lines', showlegend: false,
+      x: selectedLineX, y: selectedLineY,
+      line: { color: SEL_COLOR, width: 2.5 }, hoverinfo: 'skip' });
+  }
+
+  // Stars in other constellations — dim cyan
+  const otherConStars = RAW.stars.filter(s => allHighlightedStarIds.has(s.id) && !selectedConStarIds.has(s.id));
+  if (otherConStars.length) {
+    traces.push({ type: 'scatter', mode: 'markers', showlegend: false,
+      x: otherConStars.map(s => s.ra), y: otherConStars.map(s => s.dec),
+      marker: { size: otherConStars.map(s => s.mag != null ? Math.max(3, 8 - s.mag * 0.5) : 3),
+        color: '#00d4ff', opacity: 0.5, line: { width: 0.5, color: '#fff' } },
+      customdata: otherConStars.map(s => [s.id, s.mag != null ? s.mag.toFixed(2) : 'N/A']),
+      hovertemplate: '<b>%{customdata[0]}</b><br>Mag: %{customdata[1]}<extra></extra>' });
+  }
+
+  // Stars in selected constellation — orange (SEL_COLOR) to match the lines
+  const selStars = RAW.stars.filter(s => selectedConStarIds.has(s.id));
+  if (selStars.length) {
+    traces.push({ type: 'scatter', mode: 'markers', showlegend: false,
+      x: selStars.map(s => s.ra), y: selStars.map(s => s.dec),
+      marker: { size: selStars.map(s => s.mag != null ? Math.max(6, 12 - s.mag * 0.6) : 6),
+        color: SEL_COLOR, opacity: 1, line: { width: 2, color: '#fff' } },
+      customdata: selStars.map(s => [s.id, s.mag != null ? s.mag.toFixed(2) : 'N/A']),
+      hovertemplate: '<b>%{customdata[0]}</b><br>Mag: %{customdata[1]}<extra></extra>' });
+  }
+
+  Plotly.react('starmap', traces, buildLayout(), { displayModeBar: false });
+}
+
+function render() {
+  Plotly.react('starmap', buildTraces(), buildLayout(), { displayModeBar: false });
+}
+
+window.addEventListener('load', () => {
+  fetch('star_map_data.json')
+    .then(r => r.json())
+    .then(d => {
+      RAW = d;
+      RAW.stars.forEach(s => { starByCoord[s.ra.toFixed(4) + "," + s.dec.toFixed(4)] = s.id; });
+      const cultures = Object.keys(RAW.culture_stars).sort();
+      const itemsDiv = document.getElementById('culture-items');
+      cultures.forEach(culture => {
+        const div = document.createElement('div');
+        div.className = 'culture-item';
+        div.textContent = culture;
+        div.id = 'cult-' + CSS.escape(culture);
+        div.onclick = () => selectCulture(culture);
+        itemsDiv.appendChild(div);
+      });
+      Plotly.newPlot('starmap', buildTraces(), buildLayout(), { displayModeBar: false });
+
+      document.getElementById('starmap').on('plotly_click', function(e) {
+        const pt = e.points[0];
+        if (!pt || !pt.customdata) return;
+        const starId = pt.customdata[0];
+
+        if (!selectedCulture) {
+          // Show all mode
+          if (selectedStarId === starId) {
+            selectedStarId = null;
+            hideConName();
+          } else {
+            selectedStarId = starId;
+            const cons = RAW.star_to_cons[starId] || [];
+            if (cons.length === 0) {
+              hideConName();
+            } else {
+              window._starCons = cons;
+              const lines = cons.map((c, i) => {
+                const name = c.english || c.native || 'Unknown';
+                const nat = c.english && c.native ? ' / <em style="color:#aaa">' + c.native + '</em>' : '';
+                // Unselected links are neutral gray; selected link turns orange via click handler
+                return '<span class="con-link" data-idx="' + i + '" style="cursor:pointer;color:#ccc;border-bottom:1px dashed #888">'
+                  + '<span style="color:#666">' + c.culture + ':</span> <strong>' + name + '</strong>' + nat + '</span>';
+              }).join(' &nbsp;·&nbsp; ');
+              showConName(
+                '<span style="color:#888;font-size:11px">' + starId + ' appears in:</span><br>'
+                + lines
+                + '<br><span style="color:#666;font-size:11px">Click a name to highlight it — the name and constellation will both turn orange</span>'
+              );
+              setTimeout(() => {
+                document.querySelectorAll('.con-link').forEach(el => {
+                  el.addEventListener('click', () => {
+                    // Reset all to neutral
+                    document.querySelectorAll('.con-link').forEach(e => {
+                      e.style.color = '#ccc';
+                      e.style.borderBottom = '1px dashed #888';
+                    });
+                    // Selected link: orange — matches the orange constellation highlight
+                    el.style.color = SEL_COLOR;
+                    el.style.borderBottom = '1px solid ' + SEL_COLOR;
+                    renderWithHighlight(window._starCons[parseInt(el.dataset.idx)]);
+                  });
+                });
+              }, 50);
+            }
+          }
+        } else {
+          // Culture mode
+          const starConMap = buildStarConMap();
+          const conIdx = starConMap[starId];
+          if (conIdx === undefined) return;
+
+          if (selectedStarId === starId) {
+            selectedStarId = null;
+            hideConName();
+          } else {
+            selectedStarId = starId;
+            const con = (RAW.culture_constellations[selectedCulture] || [])[conIdx];
+            if (con) {
+              const name = con.english || con.native || 'Unknown';
+              const native = con.english && con.native ? ' &nbsp;/&nbsp; <em style="color:#aaa">' + con.native + '</em>' : '';
+              showConName('<strong>' + name + '</strong>' + native
+                + '<br><span style="color:#666;font-size:11px">cyan = selected constellation &nbsp;·&nbsp; gold = other constellations in this culture &nbsp;·&nbsp; Click the culture name again to reset</span>');
+            }
+          }
+        }
+        render();
+      });
+    });
+});
+
+window.addEventListener('resize', render);
+</script>
+</body>
+</html>

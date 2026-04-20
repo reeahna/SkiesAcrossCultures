@@ -1,0 +1,2567 @@
+{
+  "cultures": [
+    {
+      "cul_name": "Ahtna",
+      "count": 2,
+      "region": "Americas",
+      "lat": 63.39,
+      "lon": -148.95,
+      "place": "Cantwell, Alaska"
+    },
+    {
+      "cul_name": "Anuta",
+      "count": 11,
+      "region": "Oceania",
+      "lat": -11.61,
+      "lon": 169.86,
+      "place": "Anuta, Solomon Islands"
+    },
+    {
+      "cul_name": "Ava Guaraní",
+      "count": 6,
+      "region": "Americas",
+      "lat": -19.0,
+      "lon": -63.0,
+      "place": "1921 informants originally from SE Bolivia; interviewed in Ledesma and Orán, north-west Argentina, where indigenous tribes worked during the harvest"
+    },
+    {
+      "cul_name": "Banjara",
+      "count": 1,
+      "region": "Asia",
+      "lat": 21.15,
+      "lon": 79.09,
+      "place": "Seven Bajara villages (south of Nagpur, India): Dapora, Phulumari, Katarwadi, Kasola, Chinchkhed, Palaitanda, Nagrala"
+    },
+    {
+      "cul_name": "Blackfoot",
+      "count": 4,
+      "region": "Americas",
+      "lat": 49.0,
+      "lon": -113.0,
+      "place": "Northern Great Plains of North America"
+    },
+    {
+      "cul_name": "Bororo",
+      "count": 16,
+      "region": "Americas",
+      "lat": -15.9,
+      "lon": -52.3,
+      "place": "Aldeia Indígena Garças, State of Mato Grosso, Brazil (the 2nd largest Bororo village, where most data came from)"
+    },
+    {
+      "cul_name": "Bugis",
+      "count": 12,
+      "region": "Asia",
+      "lat": -4.5,
+      "lon": 120.0,
+      "place": "Southern Sulawesi"
+    },
+    {
+      "cul_name": "Dien",
+      "count": 102,
+      "region": "Europe",
+      "lat": 46.0,
+      "lon": 0.5,
+      "place": "Paris, France"
+    },
+    {
+      "cul_name": "Gond",
+      "count": 11,
+      "region": "Asia",
+      "lat": 21.15,
+      "lon": 79.09,
+      "place": "15 Gond villages around the Nagpur region in the states of Maharashtra, Andhra Pradesh and Madhya Pradesh (India): Karambi, Nimni, Matharjun, Kesalapur, Kharmat, Wamanpalli, Khadaki, Yelodi, Zashinagar, Mohagaon, Kaweli, Chalisbodi, Kopariya, Sailakota, Lodha"
+    },
+    {
+      "cul_name": "Gwich'in",
+      "count": 2,
+      "region": "Americas",
+      "lat": 66.56,
+      "lon": -145.27,
+      "place": "Fort Yukon, Alaska"
+    },
+    {
+      "cul_name": "Huave",
+      "count": 15,
+      "region": "Americas",
+      "lat": 16.19,
+      "lon": -94.89,
+      "place": "San Mateo del Mar, Oaxaca, Mexico"
+    },
+    {
+      "cul_name": "IAU",
+      "count": 86,
+      "region": "World",
+      "lat": 50.5,
+      "lon": 10.0,
+      "place": "International Astronomical Union"
+    },
+    {
+      "cul_name": "Iroquois",
+      "count": 4,
+      "region": "Americas",
+      "lat": 43.0,
+      "lon": -76.0,
+      "place": "Iroquois Confederacy"
+    },
+    {
+      "cul_name": "Java",
+      "count": 3,
+      "region": "Asia",
+      "lat": -7.5,
+      "lon": 110.0,
+      "place": "Java"
+    },
+    {
+      "cul_name": "K'iche'",
+      "count": 8,
+      "region": "Americas",
+      "lat": 15.0,
+      "lon": -91.3,
+      "place": "Guatemala: Santa Lucía Utatlán, Momostenango, and others"
+    },
+    {
+      "cul_name": "Kalina",
+      "count": 9,
+      "region": "Americas",
+      "lat": 4.0,
+      "lon": -57.0,
+      "place": "Three Carib villages (Konomerume, Karawasinde, and Kubarimye) in Suriname"
+    },
+    {
+      "cul_name": "Kolam",
+      "count": 7,
+      "region": "Asia",
+      "lat": 19.5,
+      "lon": 79.5,
+      "place": "Ten Kolam villages (south of Nagpur, India): Dubaguda, Janguguda, Jamini (Duttaguda), Laxmipur, Sonapur, Landgi Pod, Chinchpod, Bhimnala, Raipur (Khadki), Kakban"
+    },
+    {
+      "cul_name": "Korku",
+      "count": 7,
+      "region": "Asia",
+      "lat": 21.5,
+      "lon": 76.5,
+      "place": "12 Korku villages in Northern Maharashtra, about 200 km north of Amravati: Zingapur, Rani Tamboli, Kawadaziri, Makhala, Raipur, Borata Kheda, Bela, Jamunala, Baghalinga, Gaulkheda Bazar, Hatida, Gadgabhandum"
+    },
+    {
+      "cul_name": "Koyukon",
+      "count": 2,
+      "region": "Americas",
+      "lat": 65.7,
+      "lon": -156.4,
+      "place": "Huslia, Hughes, and Allakaket, Alaska"
+    },
+    {
+      "cul_name": "Lower Tanana",
+      "count": 1,
+      "region": "Americas",
+      "lat": 64.9,
+      "lon": -149.4,
+      "place": "Minto, Alaska"
+    },
+    {
+      "cul_name": "Madura",
+      "count": 6,
+      "region": "Asia",
+      "lat": -7.0,
+      "lon": 113.3,
+      "place": "Madura Island, off the northeastern coast of Java, Indonesia"
+    },
+    {
+      "cul_name": "Malay",
+      "count": 3,
+      "region": "Asia",
+      "lat": 6.12,
+      "lon": 100.37,
+      "place": "Kedah, Malaysia"
+    },
+    {
+      "cul_name": "Mandar",
+      "count": 6,
+      "region": "Asia",
+      "lat": -3.35,
+      "lon": 119.1,
+      "place": "Western Sulawesi"
+    },
+    {
+      "cul_name": "Maricopa",
+      "count": 6,
+      "region": "Americas",
+      "lat": 33.06,
+      "lon": -112.04,
+      "place": "South-central Arizona"
+    },
+    {
+      "cul_name": "Mi'kmaq",
+      "count": 4,
+      "region": "Americas",
+      "lat": 44.65,
+      "lon": -63.57,
+      "place": "Nova Scotia"
+    },
+    {
+      "cul_name": "Mocoví",
+      "count": 12,
+      "region": "Americas",
+      "lat": -29.0,
+      "lon": -60.5,
+      "place": "communities centered around Colonia Cacique Catán, and other communities in the region such as Colonia Aborigen Chaco and Colonia Aborigen El Pastoril (Chaco Province, Argentina)"
+    },
+    {
+      "cul_name": "Nicobars",
+      "count": 4,
+      "region": "Asia",
+      "lat": 8.0,
+      "lon": 93.5,
+      "place": "9 villages on Nicobar Islands: Camorta Island (village: Munak), Nancowry Island (Kakana, Pilpillow), Chowra Island (Taeela), Teressa Island (Bengali, Kalasi, Minyuk, Luxi, Enam)"
+    },
+    {
+      "cul_name": "Pardhi",
+      "count": 6,
+      "region": "Asia",
+      "lat": 20.93,
+      "lon": 77.75,
+      "place": "14 Pardhi villages in Central India, near the city of Amravati: Saur, Hartala, Hiwara BK, Wadura Beda, Daryapur, Darapur, Shinganapur, Khairi Donoda, Mangarul Chavhala Beda, Mukinpur Beda, Ajanti Beda, Zombadi Beda, Jagatpur Beda, Wadgaon"
+    },
+    {
+      "cul_name": "Pawnee",
+      "count": 12,
+      "region": "Americas",
+      "lat": 41.5,
+      "lon": -98.0,
+      "place": "Nebraska"
+    },
+    {
+      "cul_name": "Romania",
+      "count": 37,
+      "region": "Europe",
+      "lat": 45.94,
+      "lon": 24.97,
+      "place": "Villages throughout Romania"
+    },
+    {
+      "cul_name": "Ruelle",
+      "count": 74,
+      "region": "Europe",
+      "lat": 48.86,
+      "lon": 2.35,
+      "place": "Paris, France"
+    },
+    {
+      "cul_name": "Tewa",
+      "count": 12,
+      "region": "Americas",
+      "lat": 35.88,
+      "lon": -106.08,
+      "place": "Tewa-speaking Pueblos in New Mexico: San Ildefonso, Isleta, Jemez, Cochiti, Taos, Nambe"
+    },
+    {
+      "cul_name": "Thai",
+      "count": 9,
+      "region": "Asia",
+      "lat": 13.75,
+      "lon": 100.52,
+      "place": null
+    },
+    {
+      "cul_name": "Toba",
+      "count": 11,
+      "region": "Americas",
+      "lat": -24.0,
+      "lon": -61.0,
+      "place": "1921 informants originally from along the Pilcomayo river and eastern Chaco province, around Resistencia; some interviewed in Ledesma, Jujuy province, Argentina, where indigenous tribes worked during the harvest; 1924 informants from Napalpí, west of Resistencia"
+    },
+    {
+      "cul_name": "Tutchone",
+      "count": 1,
+      "region": "Americas",
+      "lat": 60.72,
+      "lon": -135.05,
+      "place": "Southern Yukon Territory, Alaska"
+    },
+    {
+      "cul_name": "Tzotzil",
+      "count": 9,
+      "region": "Americas",
+      "lat": 16.75,
+      "lon": -92.67,
+      "place": "Zinacantán, in the southern Mexican state of Chiapas"
+    },
+    {
+      "cul_name": "Wichí",
+      "count": 5,
+      "region": "Americas",
+      "lat": -23.0,
+      "lon": -63.5,
+      "place": "informants (1921-) originally from Salta Province, Argentina; some interviewed in Ledesma or Orán, Argentina, where indigenous tribes worked during the harvest"
+    },
+    {
+      "cul_name": "Yellowknives",
+      "count": 3,
+      "region": "Americas",
+      "lat": 62.46,
+      "lon": -114.35,
+      "place": "Dettah and Ndilǫ, Northwest Territories, Canada"
+    },
+    {
+      "cul_name": "Zuni",
+      "count": 9,
+      "region": "Americas",
+      "lat": 35.07,
+      "lon": -108.85,
+      "place": "on the Zuni river on the Colorado Plateau"
+    }
+  ],
+  "bars": [
+    {
+      "cul_name": "Ahtna",
+      "group": "Abstract",
+      "n": 1,
+      "total": 2,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Ahtna",
+      "group": "Human",
+      "n": 1,
+      "total": 2,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Anuta",
+      "group": "Abstract",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Anuta",
+      "group": "Animal",
+      "n": 2,
+      "total": 11,
+      "pct": 18.18
+    },
+    {
+      "cul_name": "Anuta",
+      "group": "Human",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Anuta",
+      "group": "Nature",
+      "n": 3,
+      "total": 11,
+      "pct": 27.27
+    },
+    {
+      "cul_name": "Anuta",
+      "group": "Object",
+      "n": 4,
+      "total": 11,
+      "pct": 36.36
+    },
+    {
+      "cul_name": "Ava Guaraní",
+      "group": "Abstract",
+      "n": 3,
+      "total": 6,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Ava Guaraní",
+      "group": "Human",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Ava Guaraní",
+      "group": "Nature",
+      "n": 2,
+      "total": 6,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Banjara",
+      "group": "Abstract",
+      "n": 1,
+      "total": 1,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Blackfoot",
+      "group": "Abstract",
+      "n": 2,
+      "total": 4,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Blackfoot",
+      "group": "Human",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Blackfoot",
+      "group": "Object",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Bororo",
+      "group": "Abstract",
+      "n": 1,
+      "total": 16,
+      "pct": 6.25
+    },
+    {
+      "cul_name": "Bororo",
+      "group": "Animal",
+      "n": 7,
+      "total": 16,
+      "pct": 43.75
+    },
+    {
+      "cul_name": "Bororo",
+      "group": "Human",
+      "n": 2,
+      "total": 16,
+      "pct": 12.5
+    },
+    {
+      "cul_name": "Bororo",
+      "group": "Object",
+      "n": 5,
+      "total": 16,
+      "pct": 31.25
+    },
+    {
+      "cul_name": "Bororo",
+      "group": "Uncategorized",
+      "n": 1,
+      "total": 16,
+      "pct": 6.25
+    },
+    {
+      "cul_name": "Bugis",
+      "group": "Abstract",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Bugis",
+      "group": "Animal",
+      "n": 3,
+      "total": 12,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Bugis",
+      "group": "Human",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Bugis",
+      "group": "Object",
+      "n": 6,
+      "total": 12,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Dien",
+      "group": "Abstract",
+      "n": 3,
+      "total": 102,
+      "pct": 2.94
+    },
+    {
+      "cul_name": "Dien",
+      "group": "Animal",
+      "n": 55,
+      "total": 102,
+      "pct": 53.92
+    },
+    {
+      "cul_name": "Dien",
+      "group": "Human",
+      "n": 24,
+      "total": 102,
+      "pct": 23.53
+    },
+    {
+      "cul_name": "Dien",
+      "group": "Nature",
+      "n": 2,
+      "total": 102,
+      "pct": 1.96
+    },
+    {
+      "cul_name": "Dien",
+      "group": "Object",
+      "n": 17,
+      "total": 102,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Dien",
+      "group": "Uncategorized",
+      "n": 1,
+      "total": 102,
+      "pct": 0.98
+    },
+    {
+      "cul_name": "Gond",
+      "group": "Abstract",
+      "n": 3,
+      "total": 11,
+      "pct": 27.27
+    },
+    {
+      "cul_name": "Gond",
+      "group": "Animal",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Gond",
+      "group": "Human",
+      "n": 2,
+      "total": 11,
+      "pct": 18.18
+    },
+    {
+      "cul_name": "Gond",
+      "group": "Nature",
+      "n": 3,
+      "total": 11,
+      "pct": 27.27
+    },
+    {
+      "cul_name": "Gond",
+      "group": "Object",
+      "n": 2,
+      "total": 11,
+      "pct": 18.18
+    },
+    {
+      "cul_name": "Gwich'in",
+      "group": "Abstract",
+      "n": 1,
+      "total": 2,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Gwich'in",
+      "group": "Human",
+      "n": 1,
+      "total": 2,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Huave",
+      "group": "Abstract",
+      "n": 4,
+      "total": 15,
+      "pct": 26.67
+    },
+    {
+      "cul_name": "Huave",
+      "group": "Animal",
+      "n": 7,
+      "total": 15,
+      "pct": 46.67
+    },
+    {
+      "cul_name": "Huave",
+      "group": "Human",
+      "n": 1,
+      "total": 15,
+      "pct": 6.67
+    },
+    {
+      "cul_name": "Huave",
+      "group": "Object",
+      "n": 3,
+      "total": 15,
+      "pct": 20.0
+    },
+    {
+      "cul_name": "IAU",
+      "group": "Abstract",
+      "n": 3,
+      "total": 86,
+      "pct": 3.49
+    },
+    {
+      "cul_name": "IAU",
+      "group": "Animal",
+      "n": 42,
+      "total": 86,
+      "pct": 48.84
+    },
+    {
+      "cul_name": "IAU",
+      "group": "Human",
+      "n": 16,
+      "total": 86,
+      "pct": 18.6
+    },
+    {
+      "cul_name": "IAU",
+      "group": "Nature",
+      "n": 1,
+      "total": 86,
+      "pct": 1.16
+    },
+    {
+      "cul_name": "IAU",
+      "group": "Object",
+      "n": 24,
+      "total": 86,
+      "pct": 27.91
+    },
+    {
+      "cul_name": "Iroquois",
+      "group": "Abstract",
+      "n": 2,
+      "total": 4,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Iroquois",
+      "group": "Animal",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Iroquois",
+      "group": "Object",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Java",
+      "group": "Human",
+      "n": 1,
+      "total": 3,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Java",
+      "group": "Object",
+      "n": 2,
+      "total": 3,
+      "pct": 66.67
+    },
+    {
+      "cul_name": "K'iche'",
+      "group": "Abstract",
+      "n": 5,
+      "total": 8,
+      "pct": 62.5
+    },
+    {
+      "cul_name": "K'iche'",
+      "group": "Animal",
+      "n": 1,
+      "total": 8,
+      "pct": 12.5
+    },
+    {
+      "cul_name": "K'iche'",
+      "group": "Object",
+      "n": 2,
+      "total": 8,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Kalina",
+      "group": "Abstract",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Kalina",
+      "group": "Animal",
+      "n": 5,
+      "total": 9,
+      "pct": 55.56
+    },
+    {
+      "cul_name": "Kalina",
+      "group": "Human",
+      "n": 2,
+      "total": 9,
+      "pct": 22.22
+    },
+    {
+      "cul_name": "Kalina",
+      "group": "Object",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Kolam",
+      "group": "Abstract",
+      "n": 2,
+      "total": 7,
+      "pct": 28.57
+    },
+    {
+      "cul_name": "Kolam",
+      "group": "Animal",
+      "n": 2,
+      "total": 7,
+      "pct": 28.57
+    },
+    {
+      "cul_name": "Kolam",
+      "group": "Nature",
+      "n": 2,
+      "total": 7,
+      "pct": 28.57
+    },
+    {
+      "cul_name": "Kolam",
+      "group": "Object",
+      "n": 1,
+      "total": 7,
+      "pct": 14.29
+    },
+    {
+      "cul_name": "Korku",
+      "group": "Abstract",
+      "n": 3,
+      "total": 7,
+      "pct": 42.86
+    },
+    {
+      "cul_name": "Korku",
+      "group": "Nature",
+      "n": 2,
+      "total": 7,
+      "pct": 28.57
+    },
+    {
+      "cul_name": "Korku",
+      "group": "Object",
+      "n": 2,
+      "total": 7,
+      "pct": 28.57
+    },
+    {
+      "cul_name": "Koyukon",
+      "group": "Human",
+      "n": 2,
+      "total": 2,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Lower Tanana",
+      "group": "Human",
+      "n": 1,
+      "total": 1,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Madura",
+      "group": "Abstract",
+      "n": 4,
+      "total": 6,
+      "pct": 66.67
+    },
+    {
+      "cul_name": "Madura",
+      "group": "Animal",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Madura",
+      "group": "Object",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Malay",
+      "group": "Animal",
+      "n": 1,
+      "total": 3,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Malay",
+      "group": "Object",
+      "n": 2,
+      "total": 3,
+      "pct": 66.67
+    },
+    {
+      "cul_name": "Mandar",
+      "group": "Abstract",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Mandar",
+      "group": "Animal",
+      "n": 2,
+      "total": 6,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Mandar",
+      "group": "Human",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Mandar",
+      "group": "Object",
+      "n": 2,
+      "total": 6,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Maricopa",
+      "group": "Abstract",
+      "n": 2,
+      "total": 6,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Maricopa",
+      "group": "Animal",
+      "n": 2,
+      "total": 6,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Maricopa",
+      "group": "Nature",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Maricopa",
+      "group": "Object",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Mi'kmaq",
+      "group": "Abstract",
+      "n": 2,
+      "total": 4,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Mi'kmaq",
+      "group": "Animal",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Mi'kmaq",
+      "group": "Object",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Mocoví",
+      "group": "Abstract",
+      "n": 4,
+      "total": 12,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Mocoví",
+      "group": "Animal",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Mocoví",
+      "group": "Human",
+      "n": 3,
+      "total": 12,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Mocoví",
+      "group": "Nature",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Mocoví",
+      "group": "Object",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Nicobars",
+      "group": "Abstract",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Nicobars",
+      "group": "Animal",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Nicobars",
+      "group": "Object",
+      "n": 2,
+      "total": 4,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Pardhi",
+      "group": "Abstract",
+      "n": 4,
+      "total": 6,
+      "pct": 66.67
+    },
+    {
+      "cul_name": "Pardhi",
+      "group": "Animal",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Pardhi",
+      "group": "Object",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Pawnee",
+      "group": "Abstract",
+      "n": 3,
+      "total": 12,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Pawnee",
+      "group": "Animal",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Pawnee",
+      "group": "Human",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Pawnee",
+      "group": "Object",
+      "n": 3,
+      "total": 12,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Pawnee",
+      "group": "Uncategorized",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Romania",
+      "group": "Abstract",
+      "n": 7,
+      "total": 37,
+      "pct": 18.92
+    },
+    {
+      "cul_name": "Romania",
+      "group": "Animal",
+      "n": 14,
+      "total": 37,
+      "pct": 37.84
+    },
+    {
+      "cul_name": "Romania",
+      "group": "Human",
+      "n": 6,
+      "total": 37,
+      "pct": 16.22
+    },
+    {
+      "cul_name": "Romania",
+      "group": "Object",
+      "n": 10,
+      "total": 37,
+      "pct": 27.03
+    },
+    {
+      "cul_name": "Ruelle",
+      "group": "Abstract",
+      "n": 3,
+      "total": 74,
+      "pct": 4.05
+    },
+    {
+      "cul_name": "Ruelle",
+      "group": "Animal",
+      "n": 42,
+      "total": 74,
+      "pct": 56.76
+    },
+    {
+      "cul_name": "Ruelle",
+      "group": "Human",
+      "n": 18,
+      "total": 74,
+      "pct": 24.32
+    },
+    {
+      "cul_name": "Ruelle",
+      "group": "Nature",
+      "n": 2,
+      "total": 74,
+      "pct": 2.7
+    },
+    {
+      "cul_name": "Ruelle",
+      "group": "Object",
+      "n": 9,
+      "total": 74,
+      "pct": 12.16
+    },
+    {
+      "cul_name": "Sahtúot’įnę",
+      "group": "Human",
+      "n": 1,
+      "total": 1,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Tewa",
+      "group": "Abstract",
+      "n": 5,
+      "total": 12,
+      "pct": 41.67
+    },
+    {
+      "cul_name": "Tewa",
+      "group": "Animal",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Tewa",
+      "group": "Human",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Tewa",
+      "group": "Object",
+      "n": 4,
+      "total": 12,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Thai",
+      "group": "Animal",
+      "n": 3,
+      "total": 9,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Thai",
+      "group": "Object",
+      "n": 6,
+      "total": 9,
+      "pct": 66.67
+    },
+    {
+      "cul_name": "Toba",
+      "group": "Abstract",
+      "n": 8,
+      "total": 11,
+      "pct": 72.73
+    },
+    {
+      "cul_name": "Toba",
+      "group": "Human",
+      "n": 2,
+      "total": 11,
+      "pct": 18.18
+    },
+    {
+      "cul_name": "Toba",
+      "group": "Nature",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Tutchone",
+      "group": "Human",
+      "n": 1,
+      "total": 1,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Tzotzil",
+      "group": "Abstract",
+      "n": 5,
+      "total": 9,
+      "pct": 55.56
+    },
+    {
+      "cul_name": "Tzotzil",
+      "group": "Animal",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Tzotzil",
+      "group": "Human",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Tzotzil",
+      "group": "Object",
+      "n": 2,
+      "total": 9,
+      "pct": 22.22
+    },
+    {
+      "cul_name": "Wichí",
+      "group": "Abstract",
+      "n": 2,
+      "total": 5,
+      "pct": 40.0
+    },
+    {
+      "cul_name": "Wichí",
+      "group": "Animal",
+      "n": 2,
+      "total": 5,
+      "pct": 40.0
+    },
+    {
+      "cul_name": "Wichí",
+      "group": "Nature",
+      "n": 1,
+      "total": 5,
+      "pct": 20.0
+    },
+    {
+      "cul_name": "Yellowknives",
+      "group": "Human",
+      "n": 3,
+      "total": 3,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Zuni",
+      "group": "Abstract",
+      "n": 5,
+      "total": 9,
+      "pct": 55.56
+    },
+    {
+      "cul_name": "Zuni",
+      "group": "Human",
+      "n": 3,
+      "total": 9,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Zuni",
+      "group": "Object",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    }
+  ],
+  "raw_bars": [
+    {
+      "cul_name": "Ahtna",
+      "raw_cat": "group",
+      "n": 1,
+      "total": 2,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Ahtna",
+      "raw_cat": "humanoid",
+      "n": 1,
+      "total": 2,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Anuta",
+      "raw_cat": "abstract",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Anuta",
+      "raw_cat": "bird",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Anuta",
+      "raw_cat": "body part",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Anuta",
+      "raw_cat": "fish",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Anuta",
+      "raw_cat": "landscape",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Anuta",
+      "raw_cat": "man-made object",
+      "n": 4,
+      "total": 11,
+      "pct": 36.36
+    },
+    {
+      "cul_name": "Anuta",
+      "raw_cat": "plant",
+      "n": 2,
+      "total": 11,
+      "pct": 18.18
+    },
+    {
+      "cul_name": "Ava Guaraní",
+      "raw_cat": "body part",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Ava Guaraní",
+      "raw_cat": "group",
+      "n": 3,
+      "total": 6,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Ava Guaraní",
+      "raw_cat": "landscape",
+      "n": 2,
+      "total": 6,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Banjara",
+      "raw_cat": "group",
+      "n": 1,
+      "total": 1,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Blackfoot",
+      "raw_cat": "architecture",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Blackfoot",
+      "raw_cat": "body part",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Blackfoot",
+      "raw_cat": "group",
+      "n": 2,
+      "total": 4,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Bororo",
+      "raw_cat": "bird",
+      "n": 1,
+      "total": 16,
+      "pct": 6.25
+    },
+    {
+      "cul_name": "Bororo",
+      "raw_cat": "body part",
+      "n": 2,
+      "total": 16,
+      "pct": 12.5
+    },
+    {
+      "cul_name": "Bororo",
+      "raw_cat": "group",
+      "n": 1,
+      "total": 16,
+      "pct": 6.25
+    },
+    {
+      "cul_name": "Bororo",
+      "raw_cat": "mammal",
+      "n": 2,
+      "total": 16,
+      "pct": 12.5
+    },
+    {
+      "cul_name": "Bororo",
+      "raw_cat": "man-made object",
+      "n": 5,
+      "total": 16,
+      "pct": 31.25
+    },
+    {
+      "cul_name": "Bororo",
+      "raw_cat": "other",
+      "n": 1,
+      "total": 16,
+      "pct": 6.25
+    },
+    {
+      "cul_name": "Bororo",
+      "raw_cat": "reptile",
+      "n": 4,
+      "total": 16,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Bugis",
+      "raw_cat": "architecture",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Bugis",
+      "raw_cat": "bird",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Bugis",
+      "raw_cat": "fish",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Bugis",
+      "raw_cat": "group",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Bugis",
+      "raw_cat": "humanoid",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Bugis",
+      "raw_cat": "man-made object",
+      "n": 5,
+      "total": 12,
+      "pct": 41.67
+    },
+    {
+      "cul_name": "Dien",
+      "raw_cat": "arthropod",
+      "n": 4,
+      "total": 102,
+      "pct": 3.92
+    },
+    {
+      "cul_name": "Dien",
+      "raw_cat": "bird",
+      "n": 9,
+      "total": 102,
+      "pct": 8.82
+    },
+    {
+      "cul_name": "Dien",
+      "raw_cat": "body part",
+      "n": 2,
+      "total": 102,
+      "pct": 1.96
+    },
+    {
+      "cul_name": "Dien",
+      "raw_cat": "fish",
+      "n": 7,
+      "total": 102,
+      "pct": 6.86
+    },
+    {
+      "cul_name": "Dien",
+      "raw_cat": "geometric",
+      "n": 3,
+      "total": 102,
+      "pct": 2.94
+    },
+    {
+      "cul_name": "Dien",
+      "raw_cat": "humanoid",
+      "n": 22,
+      "total": 102,
+      "pct": 21.57
+    },
+    {
+      "cul_name": "Dien",
+      "raw_cat": "landscape",
+      "n": 2,
+      "total": 102,
+      "pct": 1.96
+    },
+    {
+      "cul_name": "Dien",
+      "raw_cat": "mammal",
+      "n": 29,
+      "total": 102,
+      "pct": 28.43
+    },
+    {
+      "cul_name": "Dien",
+      "raw_cat": "man-made object",
+      "n": 17,
+      "total": 102,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Dien",
+      "raw_cat": "none",
+      "n": 1,
+      "total": 102,
+      "pct": 0.98
+    },
+    {
+      "cul_name": "Dien",
+      "raw_cat": "reptile",
+      "n": 6,
+      "total": 102,
+      "pct": 5.88
+    },
+    {
+      "cul_name": "Gond",
+      "raw_cat": "arthropod",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Gond",
+      "raw_cat": "group",
+      "n": 3,
+      "total": 11,
+      "pct": 27.27
+    },
+    {
+      "cul_name": "Gond",
+      "raw_cat": "humanoid",
+      "n": 2,
+      "total": 11,
+      "pct": 18.18
+    },
+    {
+      "cul_name": "Gond",
+      "raw_cat": "landscape",
+      "n": 2,
+      "total": 11,
+      "pct": 18.18
+    },
+    {
+      "cul_name": "Gond",
+      "raw_cat": "man-made object",
+      "n": 2,
+      "total": 11,
+      "pct": 18.18
+    },
+    {
+      "cul_name": "Gond",
+      "raw_cat": "plant",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Gwich'in",
+      "raw_cat": "group",
+      "n": 1,
+      "total": 2,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Gwich'in",
+      "raw_cat": "humanoid",
+      "n": 1,
+      "total": 2,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Huave",
+      "raw_cat": "architecture",
+      "n": 2,
+      "total": 15,
+      "pct": 13.33
+    },
+    {
+      "cul_name": "Huave",
+      "raw_cat": "arthropod",
+      "n": 3,
+      "total": 15,
+      "pct": 20.0
+    },
+    {
+      "cul_name": "Huave",
+      "raw_cat": "bird",
+      "n": 1,
+      "total": 15,
+      "pct": 6.67
+    },
+    {
+      "cul_name": "Huave",
+      "raw_cat": "fish",
+      "n": 1,
+      "total": 15,
+      "pct": 6.67
+    },
+    {
+      "cul_name": "Huave",
+      "raw_cat": "geometric",
+      "n": 3,
+      "total": 15,
+      "pct": 20.0
+    },
+    {
+      "cul_name": "Huave",
+      "raw_cat": "group",
+      "n": 1,
+      "total": 15,
+      "pct": 6.67
+    },
+    {
+      "cul_name": "Huave",
+      "raw_cat": "humanoid",
+      "n": 1,
+      "total": 15,
+      "pct": 6.67
+    },
+    {
+      "cul_name": "Huave",
+      "raw_cat": "mammal",
+      "n": 1,
+      "total": 15,
+      "pct": 6.67
+    },
+    {
+      "cul_name": "Huave",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 15,
+      "pct": 6.67
+    },
+    {
+      "cul_name": "Huave",
+      "raw_cat": "reptile",
+      "n": 1,
+      "total": 15,
+      "pct": 6.67
+    },
+    {
+      "cul_name": "IAU",
+      "raw_cat": "arthropod",
+      "n": 3,
+      "total": 86,
+      "pct": 3.49
+    },
+    {
+      "cul_name": "IAU",
+      "raw_cat": "bird",
+      "n": 9,
+      "total": 86,
+      "pct": 10.47
+    },
+    {
+      "cul_name": "IAU",
+      "raw_cat": "body part",
+      "n": 1,
+      "total": 86,
+      "pct": 1.16
+    },
+    {
+      "cul_name": "IAU",
+      "raw_cat": "fish",
+      "n": 6,
+      "total": 86,
+      "pct": 6.98
+    },
+    {
+      "cul_name": "IAU",
+      "raw_cat": "geometric",
+      "n": 3,
+      "total": 86,
+      "pct": 3.49
+    },
+    {
+      "cul_name": "IAU",
+      "raw_cat": "humanoid",
+      "n": 15,
+      "total": 86,
+      "pct": 17.44
+    },
+    {
+      "cul_name": "IAU",
+      "raw_cat": "landscape",
+      "n": 1,
+      "total": 86,
+      "pct": 1.16
+    },
+    {
+      "cul_name": "IAU",
+      "raw_cat": "mammal",
+      "n": 18,
+      "total": 86,
+      "pct": 20.93
+    },
+    {
+      "cul_name": "IAU",
+      "raw_cat": "man-made object",
+      "n": 24,
+      "total": 86,
+      "pct": 27.91
+    },
+    {
+      "cul_name": "IAU",
+      "raw_cat": "reptile",
+      "n": 6,
+      "total": 86,
+      "pct": 6.98
+    },
+    {
+      "cul_name": "Iroquois",
+      "raw_cat": "group",
+      "n": 2,
+      "total": 4,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Iroquois",
+      "raw_cat": "mammal",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Iroquois",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Java",
+      "raw_cat": "architecture",
+      "n": 1,
+      "total": 3,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Java",
+      "raw_cat": "humanoid",
+      "n": 1,
+      "total": 3,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Java",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 3,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "K'iche'",
+      "raw_cat": "bird",
+      "n": 1,
+      "total": 8,
+      "pct": 12.5
+    },
+    {
+      "cul_name": "K'iche'",
+      "raw_cat": "geometric",
+      "n": 2,
+      "total": 8,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "K'iche'",
+      "raw_cat": "group",
+      "n": 3,
+      "total": 8,
+      "pct": 37.5
+    },
+    {
+      "cul_name": "K'iche'",
+      "raw_cat": "man-made object",
+      "n": 2,
+      "total": 8,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Kalina",
+      "raw_cat": "bird",
+      "n": 2,
+      "total": 9,
+      "pct": 22.22
+    },
+    {
+      "cul_name": "Kalina",
+      "raw_cat": "body part",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Kalina",
+      "raw_cat": "group",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Kalina",
+      "raw_cat": "humanoid",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Kalina",
+      "raw_cat": "mammal",
+      "n": 2,
+      "total": 9,
+      "pct": 22.22
+    },
+    {
+      "cul_name": "Kalina",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Kalina",
+      "raw_cat": "reptile",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Kolam",
+      "raw_cat": "arthropod",
+      "n": 1,
+      "total": 7,
+      "pct": 14.29
+    },
+    {
+      "cul_name": "Kolam",
+      "raw_cat": "group",
+      "n": 2,
+      "total": 7,
+      "pct": 28.57
+    },
+    {
+      "cul_name": "Kolam",
+      "raw_cat": "landscape",
+      "n": 1,
+      "total": 7,
+      "pct": 14.29
+    },
+    {
+      "cul_name": "Kolam",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 7,
+      "pct": 14.29
+    },
+    {
+      "cul_name": "Kolam",
+      "raw_cat": "plant",
+      "n": 1,
+      "total": 7,
+      "pct": 14.29
+    },
+    {
+      "cul_name": "Kolam",
+      "raw_cat": "reptile",
+      "n": 1,
+      "total": 7,
+      "pct": 14.29
+    },
+    {
+      "cul_name": "Korku",
+      "raw_cat": "architecture",
+      "n": 1,
+      "total": 7,
+      "pct": 14.29
+    },
+    {
+      "cul_name": "Korku",
+      "raw_cat": "group",
+      "n": 3,
+      "total": 7,
+      "pct": 42.86
+    },
+    {
+      "cul_name": "Korku",
+      "raw_cat": "landscape",
+      "n": 1,
+      "total": 7,
+      "pct": 14.29
+    },
+    {
+      "cul_name": "Korku",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 7,
+      "pct": 14.29
+    },
+    {
+      "cul_name": "Korku",
+      "raw_cat": "plant",
+      "n": 1,
+      "total": 7,
+      "pct": 14.29
+    },
+    {
+      "cul_name": "Koyukon",
+      "raw_cat": "humanoid",
+      "n": 2,
+      "total": 2,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Lower Tanana",
+      "raw_cat": "humanoid",
+      "n": 1,
+      "total": 1,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Madura",
+      "raw_cat": "fish",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Madura",
+      "raw_cat": "geometric",
+      "n": 2,
+      "total": 6,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Madura",
+      "raw_cat": "group",
+      "n": 2,
+      "total": 6,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Madura",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Malay",
+      "raw_cat": "fish",
+      "n": 1,
+      "total": 3,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Malay",
+      "raw_cat": "man-made object",
+      "n": 2,
+      "total": 3,
+      "pct": 66.67
+    },
+    {
+      "cul_name": "Mandar",
+      "raw_cat": "architecture",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Mandar",
+      "raw_cat": "fish",
+      "n": 2,
+      "total": 6,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Mandar",
+      "raw_cat": "group",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Mandar",
+      "raw_cat": "humanoid",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Mandar",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Maricopa",
+      "raw_cat": "arthropod",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Maricopa",
+      "raw_cat": "group",
+      "n": 2,
+      "total": 6,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Maricopa",
+      "raw_cat": "mammal",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Maricopa",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Maricopa",
+      "raw_cat": "plant",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Mi'kmaq",
+      "raw_cat": "architecture",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Mi'kmaq",
+      "raw_cat": "group",
+      "n": 2,
+      "total": 4,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Mi'kmaq",
+      "raw_cat": "mammal",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Mocoví",
+      "raw_cat": "arthropod",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Mocoví",
+      "raw_cat": "bird",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Mocoví",
+      "raw_cat": "group",
+      "n": 4,
+      "total": 12,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Mocoví",
+      "raw_cat": "humanoid",
+      "n": 3,
+      "total": 12,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Mocoví",
+      "raw_cat": "landscape",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Mocoví",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Mocoví",
+      "raw_cat": "plant",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Nicobars",
+      "raw_cat": "arthropod",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Nicobars",
+      "raw_cat": "geometric",
+      "n": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Nicobars",
+      "raw_cat": "man-made object",
+      "n": 2,
+      "total": 4,
+      "pct": 50.0
+    },
+    {
+      "cul_name": "Pardhi",
+      "raw_cat": "group",
+      "n": 4,
+      "total": 6,
+      "pct": 66.67
+    },
+    {
+      "cul_name": "Pardhi",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Pardhi",
+      "raw_cat": "reptile",
+      "n": 1,
+      "total": 6,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Pawnee",
+      "raw_cat": "body part",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Pawnee",
+      "raw_cat": "group",
+      "n": 3,
+      "total": 12,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Pawnee",
+      "raw_cat": "humanoid",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Pawnee",
+      "raw_cat": "mammal",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Pawnee",
+      "raw_cat": "man-made object",
+      "n": 3,
+      "total": 12,
+      "pct": 25.0
+    },
+    {
+      "cul_name": "Pawnee",
+      "raw_cat": "other",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Pawnee",
+      "raw_cat": "reptile",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Romania",
+      "raw_cat": "architecture",
+      "n": 1,
+      "total": 37,
+      "pct": 2.7
+    },
+    {
+      "cul_name": "Romania",
+      "raw_cat": "arthropod",
+      "n": 2,
+      "total": 37,
+      "pct": 5.41
+    },
+    {
+      "cul_name": "Romania",
+      "raw_cat": "bird",
+      "n": 2,
+      "total": 37,
+      "pct": 5.41
+    },
+    {
+      "cul_name": "Romania",
+      "raw_cat": "fish",
+      "n": 2,
+      "total": 37,
+      "pct": 5.41
+    },
+    {
+      "cul_name": "Romania",
+      "raw_cat": "geometric",
+      "n": 2,
+      "total": 37,
+      "pct": 5.41
+    },
+    {
+      "cul_name": "Romania",
+      "raw_cat": "group",
+      "n": 5,
+      "total": 37,
+      "pct": 13.51
+    },
+    {
+      "cul_name": "Romania",
+      "raw_cat": "humanoid",
+      "n": 6,
+      "total": 37,
+      "pct": 16.22
+    },
+    {
+      "cul_name": "Romania",
+      "raw_cat": "mammal",
+      "n": 6,
+      "total": 37,
+      "pct": 16.22
+    },
+    {
+      "cul_name": "Romania",
+      "raw_cat": "man-made object",
+      "n": 9,
+      "total": 37,
+      "pct": 24.32
+    },
+    {
+      "cul_name": "Romania",
+      "raw_cat": "reptile",
+      "n": 2,
+      "total": 37,
+      "pct": 5.41
+    },
+    {
+      "cul_name": "Ruelle",
+      "raw_cat": "arthropod",
+      "n": 4,
+      "total": 74,
+      "pct": 5.41
+    },
+    {
+      "cul_name": "Ruelle",
+      "raw_cat": "bird",
+      "n": 8,
+      "total": 74,
+      "pct": 10.81
+    },
+    {
+      "cul_name": "Ruelle",
+      "raw_cat": "body part",
+      "n": 1,
+      "total": 74,
+      "pct": 1.35
+    },
+    {
+      "cul_name": "Ruelle",
+      "raw_cat": "fish",
+      "n": 5,
+      "total": 74,
+      "pct": 6.76
+    },
+    {
+      "cul_name": "Ruelle",
+      "raw_cat": "geometric",
+      "n": 3,
+      "total": 74,
+      "pct": 4.05
+    },
+    {
+      "cul_name": "Ruelle",
+      "raw_cat": "humanoid",
+      "n": 17,
+      "total": 74,
+      "pct": 22.97
+    },
+    {
+      "cul_name": "Ruelle",
+      "raw_cat": "landscape",
+      "n": 2,
+      "total": 74,
+      "pct": 2.7
+    },
+    {
+      "cul_name": "Ruelle",
+      "raw_cat": "mammal",
+      "n": 20,
+      "total": 74,
+      "pct": 27.03
+    },
+    {
+      "cul_name": "Ruelle",
+      "raw_cat": "man-made object",
+      "n": 9,
+      "total": 74,
+      "pct": 12.16
+    },
+    {
+      "cul_name": "Ruelle",
+      "raw_cat": "reptile",
+      "n": 5,
+      "total": 74,
+      "pct": 6.76
+    },
+    {
+      "cul_name": "Sahtúot’įnę",
+      "raw_cat": "humanoid",
+      "n": 1,
+      "total": 1,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Tewa",
+      "raw_cat": "abstract",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Tewa",
+      "raw_cat": "body part",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Tewa",
+      "raw_cat": "geometric",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Tewa",
+      "raw_cat": "group",
+      "n": 2,
+      "total": 12,
+      "pct": 16.67
+    },
+    {
+      "cul_name": "Tewa",
+      "raw_cat": "humanoid",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Tewa",
+      "raw_cat": "mammal",
+      "n": 1,
+      "total": 12,
+      "pct": 8.33
+    },
+    {
+      "cul_name": "Tewa",
+      "raw_cat": "man-made object",
+      "n": 4,
+      "total": 12,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Thai",
+      "raw_cat": "bird",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Thai",
+      "raw_cat": "man-made object",
+      "n": 6,
+      "total": 9,
+      "pct": 66.67
+    },
+    {
+      "cul_name": "Thai",
+      "raw_cat": "reptile",
+      "n": 2,
+      "total": 9,
+      "pct": 22.22
+    },
+    {
+      "cul_name": "Toba",
+      "raw_cat": "body part",
+      "n": 2,
+      "total": 11,
+      "pct": 18.18
+    },
+    {
+      "cul_name": "Toba",
+      "raw_cat": "group",
+      "n": 8,
+      "total": 11,
+      "pct": 72.73
+    },
+    {
+      "cul_name": "Toba",
+      "raw_cat": "landscape",
+      "n": 1,
+      "total": 11,
+      "pct": 9.09
+    },
+    {
+      "cul_name": "Tutchone",
+      "raw_cat": "humanoid",
+      "n": 1,
+      "total": 1,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Tzotzil",
+      "raw_cat": "arthropod",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Tzotzil",
+      "raw_cat": "body part",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Tzotzil",
+      "raw_cat": "geometric",
+      "n": 3,
+      "total": 9,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Tzotzil",
+      "raw_cat": "group",
+      "n": 2,
+      "total": 9,
+      "pct": 22.22
+    },
+    {
+      "cul_name": "Tzotzil",
+      "raw_cat": "man-made object",
+      "n": 2,
+      "total": 9,
+      "pct": 22.22
+    },
+    {
+      "cul_name": "Wichí",
+      "raw_cat": "bird",
+      "n": 2,
+      "total": 5,
+      "pct": 40.0
+    },
+    {
+      "cul_name": "Wichí",
+      "raw_cat": "group",
+      "n": 2,
+      "total": 5,
+      "pct": 40.0
+    },
+    {
+      "cul_name": "Wichí",
+      "raw_cat": "landscape",
+      "n": 1,
+      "total": 5,
+      "pct": 20.0
+    },
+    {
+      "cul_name": "Yellowknives",
+      "raw_cat": "humanoid",
+      "n": 3,
+      "total": 3,
+      "pct": 100.0
+    },
+    {
+      "cul_name": "Zuni",
+      "raw_cat": "abstract",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Zuni",
+      "raw_cat": "body part",
+      "n": 3,
+      "total": 9,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Zuni",
+      "raw_cat": "geometric",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    },
+    {
+      "cul_name": "Zuni",
+      "raw_cat": "group",
+      "n": 3,
+      "total": 9,
+      "pct": 33.33
+    },
+    {
+      "cul_name": "Zuni",
+      "raw_cat": "man-made object",
+      "n": 1,
+      "total": 9,
+      "pct": 11.11
+    }
+  ],
+  "totals": {
+    "Ahtna": 2,
+    "Anuta": 11,
+    "Ava Guaraní": 6,
+    "Banjara": 1,
+    "Blackfoot": 4,
+    "Bororo": 16,
+    "Bugis": 12,
+    "Dien": 102,
+    "Gond": 11,
+    "Gwich'in": 2,
+    "Huave": 15,
+    "IAU": 86,
+    "Iroquois": 4,
+    "Java": 3,
+    "K'iche'": 8,
+    "Kalina": 9,
+    "Kolam": 7,
+    "Korku": 7,
+    "Koyukon": 2,
+    "Lower Tanana": 1,
+    "Madura": 6,
+    "Malay": 3,
+    "Mandar": 6,
+    "Maricopa": 6,
+    "Mi'kmaq": 4,
+    "Mocoví": 12,
+    "Nicobars": 4,
+    "Pardhi": 6,
+    "Pawnee": 12,
+    "Romania": 37,
+    "Ruelle": 74,
+    "Sahtúot’įnę": 1,
+    "Tewa": 12,
+    "Thai": 9,
+    "Toba": 11,
+    "Tutchone": 1,
+    "Tzotzil": 9,
+    "Wichí": 5,
+    "Yellowknives": 3,
+    "Zuni": 9
+  }
+}

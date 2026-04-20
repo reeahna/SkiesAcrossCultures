@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Skies Across Cultures</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f8f9fb; font-family: Arial, sans-serif; padding: 16px; }
+  h2 { text-align: center; color: #1a1a2e; font-family: Georgia, serif; font-size: 20px; margin-bottom: 4px; }
+  .subtitle { text-align: center; color: #888; font-size: 12px; margin-bottom: 10px; }
+  .controls { text-align: center; margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; }
+  .controls button { padding: 4px 13px; border-radius: 12px; cursor: pointer; font-size: 12px; background: white; transition: all 0.15s; }
+  .controls label { font-size: 12px; color: #555; }
+  .controls select { padding: 4px 8px; border-radius: 8px; border: 1px solid #ccc; font-size: 12px; background: white; cursor: pointer; color: #333; }
+  .divider { width: 1px; height: 20px; background: #ddd; }
+  .panel-label { text-align: center; color: #555; font-size: 11px; margin-bottom: 2px; }
+  .bar-label { text-align: center; color: #333; font-family: Georgia, serif; font-size: 13px; margin-bottom: 2px; }
+  .chart-wrap { display: flex; justify-content: center; }
+  .chart-wrap > div { flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<h2>Skies Across Cultures: Exploring Cultural Trends in Constellations</h2>
+<p class="subtitle">Click a bubble or use the region buttons to filter. Click again or Reset to clear.</p>
+
+<!-- Region filter row -->
+<div class="controls" id="region-controls">
+  <div class="divider"></div>
+  <label for="top-select">Show top</label>
+  <select id="top-select">
+    <option value="10" selected>10 cultures</option>
+    <option value="20">20 cultures</option>
+    <option value="40">All cultures</option>
+  </select>
+</div>
+
+<p class="panel-label">Geographic Origin &nbsp;(bubble size = constellation count)</p>
+<div class="chart-wrap"><div id="map"></div></div>
+
+<!-- Bar chart controls -->
+<div class="controls" style="margin-top:14px; margin-bottom:4px;">
+  <label>View:</label>
+  <button id="btn-pct" onclick="setMode('pct')" style="border:2px solid #555;color:white;background:#555;">Share %</button>
+  <button id="btn-count" onclick="setMode('count')" style="border:2px solid #555;color:#555;background:white;">Count</button>
+  <div class="divider"></div>
+  <label>Categories:</label>
+  <button id="btn-grouped" onclick="setCatMode('grouped')" style="border:2px solid #555;color:white;background:#555;">Grouped</button>
+  <button id="btn-all" onclick="setCatMode('all')" style="border:2px solid #555;color:#555;background:white;">All Categories</button>
+</div>
+
+<p class="bar-label">Semantic Distribution by Culture
+  <span style="font-size:11px;color:#888;font-family:Arial"> (sorted by total count, largest first)</span>
+</p>
+<div class="chart-wrap"><div id="bar"></div></div>
+
+<script>
+let RAW = null;
+
+fetch('sky_cultures_data.json')
+  .then(r => r.json())
+  .then(data => {
+    RAW = data;
+
+const REGION_COLORS = {
+  Americas: '#e06c75', Asia: '#e5c07b',
+  Europe: '#4e9af1', Oceania: '#98c379', World: '#c678dd'
+};
+const GROUP_COLORS = {
+  Animal: '#4e9af1', Human: '#e06c75', Object: '#e5c07b',
+  Nature: '#98c379', Abstract: '#c678dd', Uncategorized: '#abb2bf'
+};
+const GROUP_ORDER = ['Animal','Human','Object','Nature','Abstract','Uncategorized'];
+
+const RAW_CAT_COLORS = {
+  mammal:           '#1f77b4',
+  bird:             '#ff7f0e',
+  fish:             '#2ca02c',
+  reptile:          '#d62728',
+  arthropod:        '#9467bd',
+  humanoid:         '#8c564b',
+  'body part':      '#e377c2',
+  'man-made object':'#7f7f7f',
+  architecture:     '#bcbd22',
+  landscape:        '#17becf',
+  plant:            '#aec7e8',
+  abstract:         '#ffbb78',
+  geometric:        '#98df8a',
+  group:            '#ff9896',
+  none:             '#c5b0d5',
+  other:            '#f7b6d2',
+};
+const RAW_CAT_ORDER = ['mammal','bird','fish','reptile','arthropod','humanoid','body part','man-made object','architecture','landscape','plant','abstract','geometric','group','none','other'];
+
+let selectedCultures = null;
+let topN = 10;
+let viewMode = 'pct';
+let catMode = 'grouped';
+
+// ── Region buttons ────────────────────────────────────────────────────────────
+const regionDiv = document.getElementById('region-controls');
+Object.entries(REGION_COLORS).forEach(([region, color]) => {
+  const btn = document.createElement('button');
+  btn.textContent = region; btn.id = 'btn-' + region;
+  btn.style.border = '2px solid ' + color; btn.style.color = color;
+  btn.onclick = () => toggleRegion(region, color, btn);
+  regionDiv.insertBefore(btn, regionDiv.querySelector(".divider"));
+});
+const resetBtn = document.createElement('button');
+resetBtn.textContent = 'Reset'; resetBtn.style.border = '2px solid #aaa'; resetBtn.style.color = '#555';
+resetBtn.onclick = () => { selectedCultures = null; clearActiveButtons(); render(); };
+regionDiv.insertBefore(resetBtn, regionDiv.querySelector(".divider"));
+
+document.getElementById('top-select').addEventListener('change', function() { topN = parseInt(this.value); render(); });
+
+window.setMode = function(mode) {
+  viewMode = mode;
+  document.getElementById('btn-pct').style.background = mode === 'pct' ? '#555' : 'white';
+  document.getElementById('btn-pct').style.color = mode === 'pct' ? 'white' : '#555';
+  document.getElementById('btn-count').style.background = mode === 'count' ? '#555' : 'white';
+  document.getElementById('btn-count').style.color = mode === 'count' ? 'white' : '#555';
+  render();
+}
+
+window.setCatMode = function(mode) {
+  catMode = mode;
+  document.getElementById('btn-grouped').style.background = mode === 'grouped' ? '#555' : 'white';
+  document.getElementById('btn-grouped').style.color = mode === 'grouped' ? 'white' : '#555';
+  document.getElementById('btn-all').style.background = mode === 'all' ? '#555' : 'white';
+  document.getElementById('btn-all').style.color = mode === 'all' ? 'white' : '#555';
+  render();
+}
+
+function clearActiveButtons() {
+  Object.entries(REGION_COLORS).forEach(([region, color]) => {
+    const b = document.getElementById('btn-' + region);
+    b.style.backgroundColor = 'white'; b.style.color = color;
+  });
+  resetBtn.style.backgroundColor = 'white'; resetBtn.style.color = '#555';
+}
+
+function toggleRegion(region, color, btn) {
+  const rc = RAW.cultures.filter(c => c.region === region).map(c => c.cul_name);
+  const already = selectedCultures && selectedCultures.length === rc.length && rc.every(c => selectedCultures.includes(c));
+  if (already) { selectedCultures = null; clearActiveButtons(); }
+  else { selectedCultures = rc; clearActiveButtons(); btn.style.backgroundColor = color; btn.style.color = 'white'; }
+  render();
+}
+
+function getCultureOrder() {
+  const totals = {};
+  RAW.bars.forEach(b => { totals[b.cul_name] = (totals[b.cul_name]||0) + b.n; });
+  return Object.entries(totals).sort((a,b) => b[1]-a[1]).map(([n]) => n);
+}
+const ALL_CULTURE_ORDER = getCultureOrder();
+
+function getVisibleCultures() {
+  let ordered = ALL_CULTURE_ORDER;
+  if (selectedCultures) ordered = ordered.filter(c => selectedCultures.includes(c));
+  return ordered.slice(0, topN);
+}
+
+function getChartWidth() { return Math.min(window.innerWidth - 32, 1100); }
+
+// ── Map ───────────────────────────────────────────────────────────────────────
+function buildMapTraces() {
+  const visibleSet = new Set(getVisibleCultures());
+  const traces = [];
+  RAW.cultures.forEach(c => {
+    const active = !selectedCultures || selectedCultures.includes(c.cul_name);
+    const inView = visibleSet.has(c.cul_name);
+    const color = REGION_COLORS[c.region] || '#aaa';
+    traces.push({
+      type: 'scattergeo', lat: [c.lat], lon: [c.lon], mode: 'markers', name: c.cul_name, showlegend: false,
+      marker: { size: Math.pow(c.count, 0.6) * 4, color, opacity: (active && inView) ? 0.9 : 0.12,
+        line: { width: (active && inView) ? 1.5 : 0.5, color: (active && inView) ? '#fff' : '#ccc' } },
+      customdata: [[c.cul_name, c.count, (c.place||'').substring(0,60), c.region]],
+      hovertemplate: '<b>%{customdata[0]}</b><br>Region: %{customdata[3]}<br>Location: %{customdata[2]}<br>Constellations: %{customdata[1]}<extra></extra>',
+    });
+  });
+  Object.entries(REGION_COLORS).forEach(([region, color]) => {
+    traces.push({ type: 'scattergeo', lat: [null], lon: [null], mode: 'markers', name: region, showlegend: true, marker: { size: 9, color } });
+  });
+  return traces;
+}
+
+function buildMapLayout() {
+  const w = getChartWidth();
+  return {
+    geo: {
+      projection: { type: 'equirectangular' },
+      showland: true, landcolor: '#e8ede4', showocean: true, oceancolor: '#d0e4f0',
+      showcoastlines: true, coastlinecolor: '#aaa', showcountries: true, countrycolor: '#ccc',
+      showframe: false, bgcolor: '#f8f9fb',
+      lataxis: { range: [-70, 80], fixedrange: true }, lonaxis: { range: [-180, 180] },
+    },
+    paper_bgcolor: '#f8f9fb', width: w,
+    margin: { l:10, r:10, t:50, b:10 }, height: 340, dragmode: 'pan',
+    legend: { title: { text: 'Region:' }, orientation: 'h', x: 0.5, y: 1.02, xanchor: 'center', yanchor: 'bottom', bgcolor: 'rgba(0,0,0,0)', borderwidth: 0, font: { size: 11 } },
+  };
+}
+
+// ── Bar chart ─────────────────────────────────────────────────────────────────
+function buildBarTraces() {
+  const cultureOrder = getVisibleCultures().slice().reverse();
+  const activeNames = new Set(cultureOrder);
+
+  const sourceData = catMode === 'grouped' ? RAW.bars : RAW.raw_bars;
+  const catOrder = catMode === 'grouped' ? ['Animal','Human','Object','Nature','Abstract','Uncategorized'] : ['mammal','bird','fish','reptile','arthropod','humanoid','body part','man-made object','architecture','landscape','plant','abstract','geometric','group','none','other'];
+  const colorMap = catMode === 'grouped' ? GROUP_COLORS : RAW_CAT_COLORS;
+
+  const catKey = catMode === 'grouped' ? 'group' : 'raw_cat';
+  const filtered = sourceData.filter(b => activeNames.has(b.cul_name));
+  const totals = {};
+  filtered.forEach(b => { totals[b.cul_name] = (totals[b.cul_name]||0) + b.n; });
+  const pctMap = {};
+  filtered.forEach(b => { pctMap[b.cul_name+'|'+b[catKey]] = { pct: b.n/totals[b.cul_name]*100, n: b.n }; });
+
+  return catOrder.map(cat => {
+    const x = [], y = [], custom = [];
+    cultureOrder.forEach(culture => {
+      const key = culture+'|'+cat;
+      y.push(culture);
+      x.push(pctMap[key] ? (viewMode === 'pct' ? pctMap[key].pct : pctMap[key].n) : 0);
+      custom.push(pctMap[key] ? pctMap[key].n : 0);
+    });
+    return {
+      type: 'bar', orientation: 'h', name: cat, x, y,
+      marker: { color: colorMap[cat] || '#ccc' }, legendrank: catOrder.indexOf(cat), customdata: custom,
+      hovertemplate: '<b>'+cat+'</b><br>Culture: %{y}<br>Value: %{x:.1f}<br>Count: %{customdata}<extra></extra>',
+    };
+  });
+}
+
+function buildBarLayout(nCultures) {
+  const w = getChartWidth();
+  const nCats = catMode === 'grouped' ? 6 : 16;
+  const legendRows = Math.ceil(nCats / 4);
+  const bottomMargin = 40 + legendRows * 22;
+  return {
+    barmode: 'stack', paper_bgcolor: '#f8f9fb', plot_bgcolor: '#f8f9fb',
+    width: w, height: Math.max(260, nCultures * 30) + 50,
+    margin: { l: 110, r: 10, t: 50, b: bottomMargin },
+    legend: {
+      title: { text: 'Constellation Type:' }, orientation: 'h',
+      x: 0.5, y: 1.02, xanchor: 'center', yanchor: 'bottom',
+      bgcolor: 'rgba(0,0,0,0)', borderwidth: 0, font: { size: 11 },
+      },
+    xaxis: {
+      title: viewMode === 'pct' ? 'Share (%)' : 'Constellation Count',
+      ticksuffix: viewMode === 'pct' ? '%' : '',
+      range: viewMode === 'pct' ? [0, 100] : undefined,
+      gridcolor: '#e0e0e0', zeroline: false, tickfont: { size: 10 },
+    },
+    yaxis: { tickfont: { size: 11 }, gridcolor: '#e0e0e0' },
+  };
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render() {
+  Plotly.react('map', buildMapTraces(), buildMapLayout(), { displayModeBar: false, scrollZoom: false });
+  Plotly.newPlot('bar', buildBarTraces(), buildBarLayout(getVisibleCultures().length), { displayModeBar: false });
+}
+
+// Initialize charts
+Plotly.newPlot('map', buildMapTraces(), buildMapLayout(), { displayModeBar: false, scrollZoom: false });
+Plotly.newPlot('bar', buildBarTraces(), buildBarLayout(getVisibleCultures().length), { displayModeBar: false });
+document.getElementById('map').on('plotly_relayout', function(u) {
+  if (u['geo.lataxis.range']) Plotly.relayout('map', { 'geo.lataxis.range': [-70, 80] });
+});
+document.getElementById('map').on('plotly_click', function(e) {
+  const pt = e.points[0];
+  if (!pt || !pt.customdata) return;
+  const name = pt.customdata[0];
+  if (selectedCultures && selectedCultures.length === 1 && selectedCultures[0] === name) {
+    selectedCultures = null; clearActiveButtons();
+  } else { selectedCultures = [name]; clearActiveButtons(); }
+  render();
+});
+  });
+
+window.addEventListener('resize', render);
+</script>
+</body>
+</html>
