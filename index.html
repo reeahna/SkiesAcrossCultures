@@ -252,60 +252,54 @@
     line-height: 1.7;
   }
 
-  /* ── Vis card ── */
-  .vis-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    background: rgba(255,255,255,0.02);
+  /* ── Vis slideshow ── */
+  .vis-slideshow {
     border: 1px solid var(--rule);
     border-radius: 4px;
     overflow: hidden;
-    margin-bottom: 48px;
-    transition: border-color 0.3s;
+    background: rgba(255,255,255,0.02);
+    margin-bottom: 64px;
   }
 
-  .vis-card:hover { border-color: var(--gold-mid); }
-
-  .vis-card.reverse { direction: rtl; }
-  .vis-card.reverse > * { direction: ltr; }
-
-  .vis-card-frame {
-    background: #080b12;
-    min-height: 380px;
-    display: flex;
-    align-items: stretch;
+  .vis-slides {
     position: relative;
-    overflow: hidden;
+    width: 100%;
   }
 
-  .vis-card-frame iframe {
+  .vis-slide {
+    display: none;
+  }
+
+  .vis-slide.active {
+    display: block;
+  }
+
+  .vis-frame {
+    background: #080b12;
     width: 100%;
-    height: 100%;
-    min-height: 380px;
+    position: relative;
+  }
+
+  .vis-frame iframe {
+    width: 100%;
+    height: 680px;
     border: none;
     display: block;
   }
 
-  .vis-card-frame img {
-    width: 100%;
-    height: 100%;
-    min-height: 380px;
-    object-fit: cover;
-    object-position: top center;
-    display: block;
-    filter: brightness(0.9);
-    transition: filter 0.3s;
-  }
+  .vis-frame.kumu iframe { height: 620px; }
 
-  .vis-card:hover .vis-card-frame img { filter: brightness(1); }
-
-  .vis-card-info {
-    padding: 44px 48px;
+  /* Info bar below iframe */
+  .vis-info {
+    border-top: 1px solid var(--rule);
+    padding: 24px 40px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
+    gap: 48px;
   }
+
+  .vis-info-left { flex: 0 0 240px; }
+  .vis-info-right { flex: 1; }
 
   .vis-fig {
     font-family: 'DM Mono', monospace;
@@ -313,43 +307,44 @@
     letter-spacing: 0.2em;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
   }
 
   .vis-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(22px, 2.5vw, 32px);
+    font-size: clamp(18px, 2vw, 26px);
     font-weight: 400;
     line-height: 1.2;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
 
   .vis-desc {
     font-size: 14px;
     color: rgba(245,242,235,0.6);
     line-height: 1.85;
-    margin-bottom: 28px;
-    flex: 1;
+    margin: 0;
   }
 
   .vis-link {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 0.15em;
     color: var(--gold);
     text-decoration: none;
     text-transform: uppercase;
     border-bottom: 1px solid var(--gold-mid);
-    padding-bottom: 4px;
+    padding-bottom: 3px;
+    margin-top: 16px;
     transition: border-color 0.2s, gap 0.2s;
     width: fit-content;
+    display: block;
   }
 
-  .vis-link:hover { border-color: var(--gold); gap: 14px; }
-  .vis-link::after { content: '→'; }
+  .vis-link:hover { border-color: var(--gold); }
+  .vis-link::after { content: ' →'; }
 
   .vis-tag {
     display: inline-block;
@@ -361,8 +356,70 @@
     color: var(--gold);
     padding: 3px 8px;
     border-radius: 2px;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     width: fit-content;
+  }
+
+  /* Navigation bar */
+  .vis-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    border-top: 1px solid var(--rule);
+    background: rgba(0,0,0,0.2);
+  }
+
+  .vis-nav-arrows {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .vis-arrow {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: transparent;
+    color: var(--paper);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+
+  .vis-arrow:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+  .vis-arrow:disabled { opacity: 0.25; cursor: default; }
+  .vis-arrow:disabled:hover { border-color: var(--rule); color: var(--paper); background: transparent; }
+
+  .vis-dots {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .vis-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(245,242,235,0.2);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .vis-dot.active { background: var(--gold); transform: scale(1.3); }
+  .vis-dot:hover:not(.active) { background: rgba(245,242,235,0.5); }
+
+  .vis-counter {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(245,242,235,0.35);
+    letter-spacing: 0.1em;
   }
 
   /* ── Previous iterations ── */
@@ -562,7 +619,10 @@
 
   /* ── Responsive ── */
   @media (max-width: 860px) {
-    .vis-card, .vis-card.reverse { grid-template-columns: 1fr; direction: ltr; }
+    .vis-frame iframe { height: 440px; }
+    .vis-info { flex-direction: column; gap: 16px; }
+    .vis-info-left { flex: none; }
+    .vis-nav { padding: 14px 20px; }
     .narrative-grid { grid-template-columns: 1fr; gap: 48px; }
     .prev-grid { grid-template-columns: 1fr; }
     .data-grid { grid-template-columns: 1fr; }
@@ -583,12 +643,12 @@
     <div class="hero-rq">
       <h3>Research Questions</h3>
       <ol>
-        <li>Do constellations across different cultures share stars, and how?</li>
-        <li>Which star patterns appear most often across cultures?</li>
-        <li>How do shapes, star usage, and naming conventions differ and overlap?</li>
-        <li>Which sky regions are represented more or less densely across cultures?</li>
-        <li>Can constellations be meaningfully clustered by semantic theme?</li>
-        <li>How does constellation complexity vary across cultures?</li>
+        <li>Do constellations across different cultures share stars, and how can we tell when they do?</li>
+        <li>Which constellations or star patterns appear most often across different cultures?</li>
+        <li>How do constellation shapes, star usage, and naming conventions differ and overlap across cultures and time periods?</li>
+        <li>Which areas of the sky and geographic hemispheres are represented more or less densely across different cultures?</li>
+        <li>Can constellations be meaningfully clustered by themes such as animals, humans, objects, and abstract concepts?</li>
+        <li>How does constellation complexity vary across cultures, measured by the number of stars and connecting lines per figure?</li>
       </ol>
     </div>
   </section>
@@ -600,29 +660,29 @@
         <div class="narrative-text fade-in">
           <h2>The same stars,<br><em>different stories</em></h2>
           <p>People across the world, and throughout different time periods, have looked at the same night sky and told completely different stories about it. The same stars that one culture connected into a hunter, another saw as a fishing net, and another as a cardinal point or a spirit.</p>
-          <p>These constellation systems are not just astronomical records — they are windows into how different peoples across time and geography understood the world around them. Our dataset, compiled by Dr. Doina Bucur, covers 40 sky cultures spanning from roughly 1700 to the present, with ~500 constellation entries across every inhabited continent.</p>
-          <p>By combining geospatial, network, and interactive star-coordinate visualizations, we reveal both the universal patterns and the deep cultural differences encoded in the night sky.</p>
+          <p>These constellation systems are not just astronomical records; they are windows into how different people across time and geography understood the world around them. The goal of this project is to visualize constellation data so that users can explore trends and patterns across cultures and time: so historians can see how constellation themes changed over time, astronomers can explore which stars are common across cultures, and researchers can compare how different cultures mapped the same region of sky.</p>
+          <p>Our dataset, maintained by our client Dr. Doina Bucur, covers approximately 500 constellation entries across 40 sky cultures, spanning the world from around 1700 to the present day. Each entry includes star identifiers, constellation lines, names, semantics, and geographic metadata.</p>
         </div>
         <div class="findings fade-in">
           <div class="finding">
             <p class="finding-num">Finding 01</p>
-            <h4>Animals dominate globally</h4>
-            <p>Across nearly every region and era, animal-type constellations make up the largest semantic category — but the specific animals vary dramatically by geography and biome.</p>
+            <h4>Semantic categories reveal geographic patterns</h4>
+            <p>The geospatial visualization allows users to observe trends across cultures and regions and to examine the semantic distributions within and across these variables, revealing how animal, human, object, and abstract themes cluster geographically.</p>
           </div>
           <div class="finding">
             <p class="finding-num">Finding 02</p>
-            <h4>Certain stars are universal anchors</h4>
-            <p>A small set of bright stars appear in the constellations of many unrelated cultures — Orion's belt being the most prominent cross-cultural reference point across the dataset.</p>
+            <h4>Certain stars are shared across many cultures</h4>
+            <p>The network and star map visualizations show an overview of the interconnectedness of stars, allowing for exploration of commonly used stars and large constellation networks across time, location, and cultures.</p>
           </div>
           <div class="finding">
             <p class="finding-num">Finding 03</p>
-            <h4>Europe skews toward large constellations</h4>
-            <p>European sky cultures (Ruelle, Dien, Romania) show disproportionately high animal counts and more complex multi-star figures, while many indigenous cultures favor abstract groupings.</p>
+            <h4>Structural patterns coexist with cultural variation</h4>
+            <p>Prior research on over 1,500 constellation diagrams from about 50 cultures identifies common structural patterns in how stars are connected, while also showing that large variation between cultures remains. The same group of stars can represent very different things depending on the culture.</p>
           </div>
           <div class="finding">
             <p class="finding-num">Finding 04</p>
-            <h4>Abstract themes rise in the Americas</h4>
-            <p>Americas cultures show a notably higher share of abstract and group-type constellations compared to Asian or European counterparts — a pattern visible across multiple cultures and eras.</p>
+            <h4>Visualization design shapes what is discoverable</h4>
+            <p>Visualizations that only show star connections may overlook the cultural meanings that make constellations meaningful to users. Combining geospatial, network, and star-coordinate views is necessary to answer the full set of research questions.</p>
           </div>
         </div>
       </div>
@@ -634,49 +694,82 @@
     <div class="container">
       <p class="section-label fade-in">Current Visualizations</p>
       <h2 class="section-title fade-in">The <em>Full Picture</em></h2>
-      <p class="section-intro fade-in">Three interactive views that together answer our six research questions — each designed for a different analytical lens.</p>
+      <p class="section-intro fade-in">Three interactive views that together address our six research questions, each designed for a different analytical lens.</p>
 
-      <!-- Fig 1: Geospatial -->
-      <div class="vis-card fade-in">
-        <div class="vis-card-frame">
-          <iframe src="geospatial-vis.html" scrolling="no" title="Geospatial Visualization"></iframe>
-        </div>
-        <div class="vis-card-info">
-          <span class="vis-tag">Interactive · HTML</span>
-          <p class="vis-fig">Figure 1</p>
-          <h3 class="vis-title">Geographic Origins &amp; Semantic Distributions</h3>
-          <p class="vis-desc">Maps 40 cultures to their geographic origins with bubble size encoding constellation count. Select a region or click a culture to reveal its semantic breakdown — proportions of animal, human, object, nature, and abstract constellation types. A time-period slider filters cultures by documentation era, exposing how themes shift from pre-1900 to contemporary fieldwork.</p>
-          <a class="vis-link" href="geospatial-vis.html" target="_blank">Open full visualization</a>
-        </div>
-      </div>
+      <!-- Slideshow -->
+      <div class="vis-slideshow fade-in">
+        <div class="vis-slides">
 
-      <!-- Fig 2: Kumu -->
-      <div class="vis-card reverse fade-in">
-        <div class="vis-card-frame">
-          <iframe src="https://embed.kumu.io/84c89a723710f4ee478f8678c2578ba3" allowfullscreen title="Kumu Network Visualization"></iframe>
-        </div>
-        <div class="vis-card-info">
-          <span class="vis-tag">Interactive · Kumu</span>
-          <p class="vis-fig">Figure 2</p>
-          <h3 class="vis-title">Constellation Relationship Network</h3>
-          <p class="vis-desc">A force-directed network mapping the relationships between cultures and their shared semantic categories. Clusters reveal which cultures group together by constellation theme, and which stand alone as outliers. Dense nodes represent semantic categories claimed by many cultures; sparse edges point to culturally unique naming traditions.</p>
-          <a class="vis-link" href="https://embed.kumu.io/84c89a723710f4ee478f8678c2578ba3" target="_blank">Open in Kumu</a>
-        </div>
-      </div>
+          <!-- Slide 1: Geospatial -->
+          <div class="vis-slide active" data-index="0">
+            <div class="vis-frame">
+              <iframe src="geospatial-vis.html" title="Geospatial Visualization"></iframe>
+            </div>
+            <div class="vis-info">
+              <div class="vis-info-left">
+                <span class="vis-tag">Interactive · HTML</span>
+                <p class="vis-fig">Figure 1</p>
+                <h3 class="vis-title">Geographic Origins &amp; Semantic Distributions</h3>
+                <a class="vis-link" href="geospatial-vis.html" target="_blank">Open full visualization</a>
+              </div>
+              <div class="vis-info-right">
+                <p class="vis-desc">This geospatial visualization categorizes constellation types and their associated geospatial context. It allows users to observe trends across cultures and regions and to examine the semantic distributions within and across these variables. The map allows a user to see the number of constellations in a given area or culture and choose regions of interest, while the bar chart provides a semantic breakdown of selected cultures. Tooltips on the map allow for a broad overview of the associated culture and its location information, as provided through the client's cleaned dataset. A time period filter lets users explore how documentation era shapes the patterns they see.</p>
+              </div>
+            </div>
+          </div>
 
-      <!-- Fig 3: Star Map -->
-      <div class="vis-card fade-in">
-        <div class="vis-card-frame">
-          <iframe src="star-map.html" scrolling="no" title="Interactive Star Map"></iframe>
+          <!-- Slide 2: Kumu -->
+          <div class="vis-slide" data-index="1">
+            <div class="vis-frame kumu">
+              <iframe src="https://embed.kumu.io/84c89a723710f4ee478f8678c2578ba3" allowfullscreen title="Kumu Network Visualization"></iframe>
+            </div>
+            <div class="vis-info">
+              <div class="vis-info-left">
+                <span class="vis-tag">Interactive · Kumu</span>
+                <p class="vis-fig">Figure 2</p>
+                <h3 class="vis-title">Constellation Relationship Network</h3>
+                <a class="vis-link" href="https://embed.kumu.io/84c89a723710f4ee478f8678c2578ba3" target="_blank">Open in Kumu</a>
+              </div>
+              <div class="vis-info-right">
+                <p class="vis-desc">This network visualization shows an overview of the interconnectedness of stars across constellation systems. It allows for exploration of commonly used stars and large constellation networks. Users are quickly drawn to dark and dense areas, which represent stars and small star networks that play a heavy role in constellations across time, location, and cultures. The network displays the connectedness between stars and different constellations, allowing users to see frequently used stars within the data and how they interact with other stars or larger constellation systems.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Star Map -->
+          <div class="vis-slide" data-index="2">
+            <div class="vis-frame">
+              <iframe src="star-map.html" title="Interactive Star Map"></iframe>
+            </div>
+            <div class="vis-info">
+              <div class="vis-info-left">
+                <span class="vis-tag">Interactive · HTML</span>
+                <p class="vis-fig">Figure 3</p>
+                <h3 class="vis-title">The Night Sky as Seen by 40 Cultures</h3>
+                <a class="vis-link" href="star-map.html" target="_blank">Open full visualization</a>
+              </div>
+              <div class="vis-info-right">
+                <p class="vis-desc">This interactive star map incorporates the star coordinates (right ascension and declination) requested by our client as part of the final visualization. It plots 1,068 stars across 40 sky cultures using actual celestial coordinates. Select any culture from the sidebar to see its constellation lines rendered in gold across the sky. In Show All mode, click any star to reveal every culture that incorporated it into a constellation, with each name clickable to highlight that specific figure. This view directly addresses the research question of which stars appear most often across different cultures.</p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /vis-slides -->
+
+        <!-- Navigation bar -->
+        <div class="vis-nav">
+          <div class="vis-nav-arrows">
+            <button class="vis-arrow" id="vis-prev" aria-label="Previous">←</button>
+            <button class="vis-arrow" id="vis-next" aria-label="Next">→</button>
+          </div>
+          <div class="vis-dots">
+            <button class="vis-dot active" data-slide="0" aria-label="Figure 1"></button>
+            <button class="vis-dot" data-slide="1" aria-label="Figure 2"></button>
+            <button class="vis-dot" data-slide="2" aria-label="Figure 3"></button>
+          </div>
+          <span class="vis-counter" id="vis-counter">1 / 3</span>
         </div>
-        <div class="vis-card-info">
-          <span class="vis-tag">Interactive · HTML</span>
-          <p class="vis-fig">Figure 3</p>
-          <h3 class="vis-title">The Night Sky as Seen by 40 Cultures</h3>
-          <p class="vis-desc">Plots 1,068 stars by right ascension and declination — actual sky coordinates. Select any culture to see its constellation lines rendered in gold. In Show All mode, click any star to reveal every culture that incorporated it, with each constellation name clickable to highlight that specific figure in orange. Reveals which stars serve as cross-cultural anchors.</p>
-          <a class="vis-link" href="star-map.html" target="_blank">Open full visualization</a>
-        </div>
-      </div>
+      </div><!-- /vis-slideshow -->
 
     </div>
   </section>
@@ -704,8 +797,8 @@
           </div>
           <div class="prev-info">
             <p class="prev-fig">Figure 1 · v1 · Power BI</p>
-            <h4 class="prev-title">Geospatial — Initial Prototype</h4>
-            <p class="prev-desc">The first geospatial prototype built in Power BI. Established the core idea of mapping cultures to geographic origins with semantic breakdowns — but lacked the interactivity and custom filtering of the final HTML version.</p>
+            <h4 class="prev-title">Geospatial: Initial Prototype</h4>
+            <p class="prev-desc">The first geospatial prototype, built in Power BI. It established the core idea of mapping cultures to their geographic origins with semantic breakdowns by constellation type. After receiving evaluation feedback, we prioritized telling more of a story through the visualizations and transitioned to HTML to more strongly showcase geospatial insights and enable custom filtering.</p>
           </div>
         </div>
 
@@ -716,15 +809,15 @@
           </div>
           <div class="prev-info">
             <p class="prev-fig">Figure 2 · v1 · Gephi</p>
-            <h4 class="prev-title">Star Network — Initial Prototype</h4>
-            <p class="prev-desc">The original network visualization built in Gephi, mapping stars as nodes and constellation co-membership as edges. Revealed density patterns and hub stars but was static and hard to explore. Evolved into the interactive Kumu and star-map visualizations.</p>
+            <h4 class="prev-title">Star Network: Initial Prototype</h4>
+            <p class="prev-desc">The original network visualization built in Gephi, with node and edge data extracted from the main dataset to represent individual stars in constellations and the strength of connection between them. This allowed for identification of large constellations and the most and least impactful individual stars. The feedback from our client to incorporate star coordinates led us toward the interactive Kumu and star map visualizations.</p>
           </div>
         </div>
 
       </div>
 
       <div class="evolution-note fade-in">
-        <strong>On iteration:</strong> Both initial prototypes confirmed our core hypotheses but exposed limitations — Power BI's geospatial capabilities couldn't support the semantic filtering we needed, and Gephi's static export made star-level exploration impossible. The pivot to HTML and Kumu allowed us to build the interactivity that the data demands.
+        <strong>On iteration:</strong> After receiving feedback from our evaluation, we prioritized telling more of a story through the visualizations. This is why we took the opportunity to update them to be more user-friendly and professional in HTML. We also received feedback from our client that it would be useful to incorporate star coordinates as part of the final visualization, which led to the interactive star map. Throughout this process we also explored alternative tools like Kumu to help achieve a more meaningful and polished final result.
       </div>
     </div>
   </section>
@@ -734,7 +827,7 @@
     <div class="container">
       <p class="section-label fade-in">The Data</p>
       <h2 class="section-title fade-in">Open &amp; <em>Reproducible</em></h2>
-      <p class="section-intro fade-in">All source data, processing code, and visualization files are publicly available. Anyone should be able to reproduce every result shown here.</p>
+      <p class="section-intro fade-in">Our project uses a single dataset built and maintained by our client, Dr. Doina Bucur: the constellation-lines dataset, available under a Creative Commons license in analyzable JSON format. All source data, processing code, and visualization files are publicly available so that anyone can reproduce every step.</p>
 
       <div class="data-grid fade-in">
         <div class="data-cell">
@@ -755,8 +848,8 @@
         <a class="data-pill" href="https://github.com" target="_blank">GitHub Repository</a>
         <a class="data-pill" href="sky_cultures_data.json" target="_blank">sky_cultures_data.json</a>
         <a class="data-pill" href="star_map_data.json" target="_blank">star_map_data.json</a>
-        <a class="data-pill" href="https://doi.org/10.1371/journal.pone.0272270" target="_blank">Bucur 2022 — PLOS ONE</a>
-        <a class="data-pill" href="https://arxiv.org/abs/2306.17573" target="_blank">Bucur 2024 — arXiv</a>
+        <a class="data-pill" href="https://doi.org/10.1371/journal.pone.0272270" target="_blank">Bucur 2022 · PLOS ONE</a>
+        <a class="data-pill" href="https://arxiv.org/abs/2306.17573" target="_blank">Bucur 2024 · arXiv</a>
       </div>
     </div>
   </section>
@@ -766,7 +859,7 @@
     <div class="footer-left">
       <strong>Skies Across Cultures</strong><br>
       I346 / E538 · Prototyping &amp; Evaluation · Indiana University<br>
-      Client: Dr. Doina Bucur · Spring 2025
+      Client: Dr. Doina Bucur · Spring 2026
     </div>
     <div class="footer-refs">
       [1] Bucur, D. (2022). The network signature of constellation line figures. <em>PLOS ONE</em> 17(7).<br>
@@ -790,6 +883,33 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Vis slideshow
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.vis-slide');
+  const dots = document.querySelectorAll('.vis-dot');
+  const counter = document.getElementById('vis-counter');
+  const prevBtn = document.getElementById('vis-prev');
+  const nextBtn = document.getElementById('vis-next');
+  const total = slides.length;
+
+  function goToSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = (n + total) % total;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+    counter.textContent = (currentSlide + 1) + ' / ' + total;
+    prevBtn.disabled = currentSlide === 0;
+    nextBtn.disabled = currentSlide === total - 1;
+  }
+
+  prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+  nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+  dots.forEach(dot => dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.slide))));
+
+  // Init state
+  prevBtn.disabled = true;
 </script>
 </body>
 </html>
