@@ -27,6 +27,7 @@
     color: var(--paper);
     font-family: 'Outfit', sans-serif;
     font-weight: 300;
+    font-size: 15px;
     line-height: 1.7;
     overflow-x: hidden;
   }
@@ -67,7 +68,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 80px 40px 60px;
+    padding: 32px 40px 40px;
     position: relative;
   }
 
@@ -81,22 +82,22 @@
 
   .eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.25em;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 28px;
+    margin-bottom: 16px;
     opacity: 0;
     animation: fadeUp 0.8s ease 0.2s forwards;
   }
 
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(52px, 8vw, 96px);
+    font-size: clamp(44px, 6.5vw, 80px);
     font-weight: 300;
     line-height: 1.05;
     letter-spacing: -0.01em;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     opacity: 0;
     animation: fadeUp 0.8s ease 0.4s forwards;
   }
@@ -108,22 +109,22 @@
 
   .hero-subtitle {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(16px, 2.5vw, 22px);
+    font-size: clamp(15px, 1.8vw, 19px);
     font-weight: 300;
     font-style: italic;
     color: rgba(245,242,235,0.55);
-    margin-bottom: 48px;
+    margin-bottom: 28px;
     opacity: 0;
     animation: fadeUp 0.8s ease 0.6s forwards;
   }
 
   .hero-rq {
-    max-width: 680px;
+    max-width: 720px;
     text-align: left;
     background: rgba(255,255,255,0.03);
     border: 1px solid var(--rule);
     border-left: 3px solid var(--gold);
-    padding: 28px 32px;
+    padding: 20px 32px;
     border-radius: 2px;
     opacity: 0;
     animation: fadeUp 0.8s ease 0.8s forwards;
@@ -131,24 +132,25 @@
 
   .hero-rq h3 {
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.2em;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   .hero-rq ol {
-    padding-left: 18px;
-    color: rgba(245,242,235,0.7);
+    padding-left: 20px;
+    color: rgba(245,242,235,0.75);
     font-size: 14px;
-    line-height: 1.9;
+    line-height: 1.75;
   }
 
-  .hero-rq li { margin-bottom: 2px; }
+  .hero-rq li { margin-bottom: 1px; }
 
   /* ── Sections ── */
   section { padding: 100px 0; }
+  section.compact { padding: 60px 0 40px; }
 
   .container {
     max-width: 1160px;
@@ -178,7 +180,7 @@
   .section-intro {
     max-width: 640px;
     color: rgba(245,242,235,0.65);
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: 64px;
     line-height: 1.8;
   }
@@ -233,7 +235,7 @@
 
   .finding-num {
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
+    font-size: 12px;
     color: var(--gold);
     letter-spacing: 0.15em;
     margin-bottom: 6px;
@@ -241,13 +243,13 @@
 
   .finding h4 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 400;
     margin-bottom: 6px;
   }
 
   .finding p {
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(245,242,235,0.55);
     line-height: 1.7;
   }
@@ -278,69 +280,80 @@
     background: #080b12;
     width: 100%;
     position: relative;
+    overflow: hidden;
+    height: 400px;
   }
 
   .vis-frame iframe {
-    width: 100%;
-    height: 680px;
+    width: 154%;
+    height: 770px;
     border: none;
     display: block;
+    transform: scale(0.65);
+    transform-origin: top left;
+    pointer-events: auto;
   }
 
-  .vis-frame.kumu iframe { height: 620px; }
+  .vis-frame.kumu {
+    height: 370px;
+  }
+
+  .vis-frame.kumu iframe {
+    width: 154%;
+    height: 715px;
+    transform: scale(0.65);
+    transform-origin: top left;
+  }
 
   /* Info bar below iframe */
   .vis-info {
     border-top: 1px solid var(--rule);
-    padding: 24px 40px;
+    padding: 24px 36px;
     display: flex;
-    align-items: flex-start;
-    gap: 48px;
+    align-items: center;
+    gap: 40px;
   }
 
-  .vis-info-left { flex: 0 0 240px; }
+  .vis-info-left { flex: 0 0 220px; }
   .vis-info-right { flex: 1; }
 
   .vis-fig {
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.2em;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .vis-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(18px, 2vw, 26px);
+    font-size: clamp(18px, 2vw, 24px);
     font-weight: 400;
     line-height: 1.2;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
   }
 
   .vis-desc {
-    font-size: 14px;
+    font-size: 15px;
     color: rgba(245,242,235,0.6);
-    line-height: 1.85;
+    line-height: 1.75;
     margin: 0;
   }
 
   .vis-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: block;
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.15em;
     color: var(--gold);
     text-decoration: none;
     text-transform: uppercase;
     border-bottom: 1px solid var(--gold-mid);
     padding-bottom: 3px;
-    margin-top: 16px;
-    transition: border-color 0.2s, gap 0.2s;
+    margin-top: 12px;
+    transition: border-color 0.2s;
     width: fit-content;
-    display: block;
   }
 
   .vis-link:hover { border-color: var(--gold); }
@@ -349,7 +362,7 @@
   .vis-tag {
     display: inline-block;
     font-family: 'DM Mono', monospace;
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     border: 1px solid var(--gold-mid);
@@ -466,12 +479,12 @@
   .prev-card:hover .prev-frame img { filter: brightness(1) saturate(1); }
 
   .prev-info {
-    padding: 24px 28px;
+    padding: 28px 32px;
   }
 
   .prev-fig {
     font-family: 'DM Mono', monospace;
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 0.2em;
     color: var(--muted);
     text-transform: uppercase;
@@ -480,15 +493,15 @@
 
   .prev-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 400;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .prev-desc {
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(245,242,235,0.5);
-    line-height: 1.75;
+    line-height: 1.8;
   }
 
   .evolution-note {
@@ -497,9 +510,9 @@
     border: 1px solid var(--rule);
     border-left: 3px solid var(--gold);
     background: rgba(201,168,76,0.04);
-    font-size: 14px;
+    font-size: 15px;
     color: rgba(245,242,235,0.65);
-    line-height: 1.8;
+    line-height: 1.85;
   }
 
   .evolution-note strong { color: var(--paper); font-weight: 400; }
@@ -619,7 +632,8 @@
 
   /* ── Responsive ── */
   @media (max-width: 860px) {
-    .vis-frame iframe { height: 440px; }
+    .vis-frame { height: 320px; }
+    .vis-frame iframe { height: 457px; }
     .vis-info { flex-direction: column; gap: 16px; }
     .vis-info-left { flex: none; }
     .vis-nav { padding: 14px 20px; }
@@ -690,11 +704,11 @@
   </section>
 
   <!-- ── CURRENT VISUALIZATIONS ── -->
-  <section>
+  <section class="compact">
     <div class="container">
       <p class="section-label fade-in">Current Visualizations</p>
-      <h2 class="section-title fade-in">The <em>Full Picture</em></h2>
-      <p class="section-intro fade-in">Three interactive views that together address our six research questions, each designed for a different analytical lens.</p>
+      <h2 class="section-title fade-in" style="margin-bottom:12px;">The <em>Full Picture</em></h2>
+      <p class="section-intro fade-in" style="margin-bottom:28px;">Three interactive views that together address our six research questions, each designed for a different analytical lens.</p>
 
       <!-- Slideshow -->
       <div class="vis-slideshow fade-in">
