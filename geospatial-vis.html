@@ -58,7 +58,7 @@
 <script>
 let RAW = null;
 
-fetch('sky_cultures_data.json')
+fetch('data/sky_cultures_data.json')
   .then(r => r.json())
   .then(data => {
     RAW = data;
@@ -98,7 +98,7 @@ let topN = 10;
 let viewMode = 'pct';
 let catMode = 'grouped';
 
-// ── Region buttons ────────────────────────────────────────────────────────────
+// Region buttons
 const regionDiv = document.getElementById('region-controls');
 Object.entries(REGION_COLORS).forEach(([region, color]) => {
   const btn = document.createElement('button');
@@ -163,7 +163,7 @@ function getVisibleCultures() {
 
 function getChartWidth() { return Math.min(window.innerWidth - 32, 1100); }
 
-// ── Map ───────────────────────────────────────────────────────────────────────
+// Map
 function buildMapTraces() {
   const visibleSet = new Set(getVisibleCultures());
   const traces = [];
@@ -201,22 +201,19 @@ function buildMapLayout() {
   };
 }
 
-// ── Bar chart ─────────────────────────────────────────────────────────────────
+// Bar chart
 function buildBarTraces() {
   const cultureOrder = getVisibleCultures().slice().reverse();
   const activeNames = new Set(cultureOrder);
-
   const sourceData = catMode === 'grouped' ? RAW.bars : RAW.raw_bars;
   const catOrder = catMode === 'grouped' ? ['Animal','Human','Object','Nature','Abstract','Uncategorized'] : ['mammal','bird','fish','reptile','arthropod','humanoid','body part','man-made object','architecture','landscape','plant','abstract','geometric','group','none','other'];
   const colorMap = catMode === 'grouped' ? GROUP_COLORS : RAW_CAT_COLORS;
-
   const catKey = catMode === 'grouped' ? 'group' : 'raw_cat';
   const filtered = sourceData.filter(b => activeNames.has(b.cul_name));
   const totals = {};
   filtered.forEach(b => { totals[b.cul_name] = (totals[b.cul_name]||0) + b.n; });
   const pctMap = {};
   filtered.forEach(b => { pctMap[b.cul_name+'|'+b[catKey]] = { pct: b.n/totals[b.cul_name]*100, n: b.n }; });
-
   return catOrder.map(cat => {
     const x = [], y = [], custom = [];
     cultureOrder.forEach(culture => {
@@ -246,7 +243,7 @@ function buildBarLayout(nCultures) {
       title: { text: 'Constellation Type:' }, orientation: 'h',
       x: 0.5, y: 1.02, xanchor: 'center', yanchor: 'bottom',
       bgcolor: 'rgba(0,0,0,0)', borderwidth: 0, font: { size: 11 },
-      },
+    },
     xaxis: {
       title: viewMode === 'pct' ? 'Share (%)' : 'Constellation Count',
       ticksuffix: viewMode === 'pct' ? '%' : '',
@@ -257,13 +254,13 @@ function buildBarLayout(nCultures) {
   };
 }
 
-// ── Render ────────────────────────────────────────────────────────────────────
+// Render
 function render() {
   Plotly.react('map', buildMapTraces(), buildMapLayout(), { displayModeBar: false, scrollZoom: false });
   Plotly.newPlot('bar', buildBarTraces(), buildBarLayout(getVisibleCultures().length), { displayModeBar: false });
 }
 
-// Initialize charts
+// Initialize
 Plotly.newPlot('map', buildMapTraces(), buildMapLayout(), { displayModeBar: false, scrollZoom: false });
 Plotly.newPlot('bar', buildBarTraces(), buildBarLayout(getVisibleCultures().length), { displayModeBar: false });
 document.getElementById('map').on('plotly_relayout', function(u) {
