@@ -827,8 +827,8 @@
         <div class="narrative-text fade-in">
           <h2>The same stars,<br><em>different stories</em></h2>
           <p>People across the world, and throughout different time periods, have looked at the same night sky and told completely different stories about it. The same stars that one culture connected into a hunter, another saw as a fishing net, and another as a cardinal point or a spirit.</p>
-          <p>These constellation systems are not just astronomical records; they are windows into how different people across time and geography understood the world around them. The goal of this project is to visualize constellation data so that users can explore trends and patterns across cultures and time: so historians can see how constellation themes changed over time, astronomers can explore which stars are common across cultures, and researchers can compare how different cultures mapped the same region of sky.</p>
-          <p>Our dataset, maintained by our client Dr. Doina Bucur, covers approximately 500 constellation entries across 40 sky cultures, spanning the world from around 1700 to the present day. Each entry includes star identifiers, constellation lines, names, semantics, and geographic metadata.</p>
+          <p>These constellation systems are not just astronomical records; they are windows into how different people across time and geography understood the world around them. The goal of this project is to visualize constellation data so that users can explore trends and patterns across cultures and time. So historians can see how constellation themes changed over time, astronomers can explore which stars are common across cultures, and researchers can compare how different cultures mapped the same region of sky.</p>
+          <p>Our project uses a single dataset, the constellation-lines dataset, built and maintained by our client Dr. Doina Bucur. It is an accessible, Creative Commons-licensed, documented dataset currently covering 40 sky cultures in analyzable JSON format, spanning cultures across the world and through time. Each constellation entry contains fields such as star identifiers, constellation lines, names, semantics, geographic metadata, and more.</p>
         </div>
         <div class="findings fade-in">
           <div class="finding">
@@ -844,7 +844,7 @@
           <div class="finding">
             <p class="finding-num">Finding 03</p>
             <h4>Structural patterns coexist with cultural variation</h4>
-            <p>Prior research on over 1,500 constellation diagrams from about 50 cultures identifies common structural patterns in how stars are connected, while also showing that large variation between cultures remains. The same group of stars can represent very different things depending on the culture.</p>
+            <p>Prior research on over 1,500 constellation diagrams from about 50 cultures identifies common structural patterns in how stars are connected, while also showing that large variation between cultures remains. The same group of stars can represent very different things depending on the culture, meaning constellation design is influenced as much by cultural interpretation as by the arrangement of stars.</p>
           </div>
           <div class="finding">
             <p class="finding-num">Finding 04</p>
@@ -880,7 +880,7 @@
                 <a class="vis-link" href="geospatial-vis.html" target="_blank">Open full visualization</a>
               </div>
               <div class="vis-info-right">
-                <p class="vis-desc">This geospatial visualization categorizes constellation types and their associated geospatial context. It allows users to observe trends across cultures and regions and to examine the semantic distributions within and across these variables. The map allows a user to see the number of constellations in a given area or culture and choose regions of interest, while the bar chart provides a semantic breakdown of selected cultures. Tooltips on the map allow for a broad overview of the associated culture and its location information, as provided through the client's cleaned dataset. A time period filter lets users explore how documentation era shapes the patterns they see.</p>
+                <p class="vis-desc">This geospatial visualization categorizes constellation types and their associated geospatial aspects. It allows users to observe trends across cultures and regions and to examine the semantic distributions within and across these variables. The map allows a user to see the number of constellations in a given area or culture and choose regions of interest, while the bar chart provides a semantic breakdown of selected cultures. Tooltips on the map allow for a broad overview of the associated culture and its location information, as provided through the client's cleaned dataset. A time period filter lets users explore how documentation era shapes the patterns they see.</p>
               </div>
             </div>
           </div>
@@ -898,7 +898,7 @@
                 <a class="vis-link" href="https://embed.kumu.io/84c89a723710f4ee478f8678c2578ba3" target="_blank">Open in Kumu</a>
               </div>
               <div class="vis-info-right">
-                <p class="vis-desc">This network visualization shows an overview of the interconnectedness of stars across constellation systems. It allows for exploration of commonly used stars and large constellation networks. Users are quickly drawn to dark and dense areas, which represent stars and small star networks that play a heavy role in constellations across time, location, and cultures. The network displays the connectedness between stars and different constellations, allowing users to see frequently used stars within the data and how they interact with other stars or larger constellation systems.</p>
+                <p class="vis-desc">This network visualization shows an overview of the interconnectedness of stars across constellation systems. It allows for exploration of commonly used stars and large constellation networks. Users are quickly drawn to dark and dense areas, which represent stars and small star networks that play a heavy role in constellations across time, location, and cultures. By using star images, the most frequently used individual stars in the dataset are marked, highlighting key players in the network. The IAU recognition status can be toggled on or off, and constellation families can be selected to see all of the individual stars that are part of a given family.</p>
               </div>
             </div>
           </div>
@@ -916,7 +916,7 @@
                 <a class="vis-link" href="star-map.html" target="_blank">Open full visualization</a>
               </div>
               <div class="vis-info-right">
-                <p class="vis-desc">This interactive star map incorporates the star coordinates (right ascension and declination) requested by our client as part of the final visualization. It plots 1,068 stars across 40 sky cultures using actual celestial coordinates. Select any culture from the sidebar to see its constellation lines rendered in gold across the sky. In Show All mode, click any star to reveal every culture that incorporated it into a constellation, with each name clickable to highlight that specific figure. This view directly addresses the research question of which stars appear most often across different cultures.</p>
+                <p class="vis-desc">This interactive star map was inspired by additional data and feedback directly from our client. Although the network maps show important characteristics of the data, neither Gephi nor Kumu could display the actual shape of constellations through star coordinates. By selecting individual cultures and stars, related constellations and their associated cultures and names can be seen, with the critical geospatial insight of right ascension and declination. This makes for a more intuitive understanding of and navigation through the constellations across all 40 sky cultures.</p>
               </div>
             </div>
           </div>
@@ -984,7 +984,7 @@
       </div>
 
       <div class="evolution-note fade-in">
-        <strong>On iteration:</strong> After receiving feedback from our evaluation, we prioritized telling more of a story through the visualizations. This is why we took the opportunity to update them to be more user-friendly and professional in HTML. We also received feedback from our client that it would be useful to incorporate star coordinates as part of the final visualization, which led to the interactive star map. Throughout this process we also explored alternative tools like Kumu to help achieve a more meaningful and polished final result.
+        <strong>On iteration:</strong> After receiving feedback from our client, instructors, and peers, we prioritized telling more of a story through the visualizations. This is why we took the opportunity to update them to be more user-friendly and professional in HTML, which allowed us to more strongly showcase geospatial insights. We also received feedback from our client that it may be useful to incorporate the star coordinates (RA, DEC) as part of the final visualization. This encouraged both the use of Kumu and HTML for the Shared Stars and Interactive Star Map. Throughout this process we also dealt with the challenge of time and complexity, as there is still data within the dataset that can be incorporated into more visualizations.
       </div>
     </div>
   </section>
@@ -994,7 +994,7 @@
     <div class="container">
       <p class="section-label fade-in">The Data</p>
       <h2 class="section-title fade-in">Open &amp; <em>Reproducible</em></h2>
-      <p class="section-intro fade-in">Our project uses a single dataset built and maintained by our client, Dr. Doina Bucur: the constellation-lines dataset, available under a Creative Commons license in analyzable JSON format. All source data, processing code, and visualization files are publicly available so that anyone can reproduce every step.</p>
+      <p class="section-intro fade-in">Our project uses a single dataset, the constellation-lines dataset, built and maintained by our client Dr. Doina Bucur. It is an accessible, Creative Commons-licensed, documented dataset currently covering 40 sky cultures in analyzable JSON format. All source data, processing code, and visualization files are publicly available in our GitHub repository.</p>
 
       <div class="data-grid fade-in">
         <div class="data-cell">
@@ -1012,6 +1012,7 @@
       </div>
 
       <div class="data-links fade-in">
+        <a class="data-pill" href="https://reeahna.github.io/SkiesAcrossCultures/" target="_blank">GitHub Pages</a>
         <a class="data-pill" href="https://github.com/reeahna/SkiesAcrossCultures/" target="_blank">GitHub Repository</a>
         <a class="data-pill" href="https://doi.org/10.1371/journal.pone.0272270" target="_blank">Bucur 2022 · PLOS ONE</a>
         <a class="data-pill" href="https://arxiv.org/abs/2306.17573" target="_blank">Bucur 2024 · arXiv</a>
@@ -1023,8 +1024,9 @@
   <footer>
     <div class="footer-left">
       <strong>Skies Across Cultures</strong><br>
-      E483 / E583 · Information &amp; Visualization · Indiana University<br>
-      Client: Dr. Doina Bucur · Spring 2026
+      E483 / E583 · Information &amp; Visualization · Indiana University · Spring 2026<br>
+      Ahna Abraham · Emily Clough · Nick LaPlante · Matthew Thurber · Aditi Phadke<br>
+      Client: Dr. Doina Bucur · Instructor: Dr. Katy Borner
     </div>
     <div class="footer-refs">
       [1] Bucur, D. (2022). The network signature of constellation line figures. <em>PLOS ONE</em> 17(7).<br>
