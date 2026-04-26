@@ -303,8 +303,15 @@
     pointer-events: auto;
   }
 
-  .vis-frame.kumu {
-    height: 370px;
+  .vis-frame.geo {
+    height: 520px;
+  }
+
+  .vis-frame.geo iframe {
+    width: 154%;
+    height: 920px;
+    transform: scale(0.65);
+    transform-origin: top left;
   }
 
   .vis-frame.kumu iframe {
@@ -888,8 +895,8 @@
 
           <!-- Slide 1: Geospatial -->
           <div class="vis-slide" data-index="1">
-            <div class="vis-frame">
-              <iframe src="geospatial-vis.html" title="Geospatial Visualization"></iframe>
+            <div class="vis-frame geo">
+              <iframe data-src="geospatial-vis.html" title="Geospatial Visualization"></iframe>
             </div>
             <div class="vis-info">
               <div class="vis-info-left">
@@ -907,7 +914,7 @@
           <!-- Slide 2: Kumu -->
           <div class="vis-slide" data-index="2">
             <div class="vis-frame kumu">
-              <iframe src="https://embed.kumu.io/84c89a723710f4ee478f8678c2578ba3" allowfullscreen title="Kumu Network Visualization"></iframe>
+              <iframe data-src="https://embed.kumu.io/84c89a723710f4ee478f8678c2578ba3" allowfullscreen title="Kumu Network Visualization"></iframe>
             </div>
             <div class="vis-info">
               <div class="vis-info-left">
@@ -925,7 +932,7 @@
           <!-- Slide 3: Star Map -->
           <div class="vis-slide" data-index="3">
             <div class="vis-frame">
-              <iframe src="star-map.html" title="Interactive Star Map"></iframe>
+              <iframe data-src="star-map.html" title="Interactive Star Map"></iframe>
             </div>
             <div class="vis-info">
               <div class="vis-info-left">
@@ -1089,6 +1096,13 @@
     counter.textContent = (currentSlide + 1) + ' / ' + total;
     prevBtn.disabled = currentSlide === 0;
     nextBtn.disabled = currentSlide === total - 1;
+
+    // Load iframe from data-src the first time this slide is visited
+    const activeIframe = slides[currentSlide].querySelector('iframe[data-src]');
+    if (activeIframe) {
+      activeIframe.src = activeIframe.dataset.src;
+      delete activeIframe.dataset.src;
+    }
   }
 
   prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));

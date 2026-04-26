@@ -161,7 +161,7 @@ function getVisibleCultures() {
   return ordered.slice(0, topN);
 }
 
-function getChartWidth() { return Math.min(window.innerWidth - 32, 1100); }
+function getChartWidth() { return 1060; }
 
 // Map
 function buildMapTraces() {
@@ -197,7 +197,7 @@ function buildMapLayout() {
     },
     paper_bgcolor: '#f8f9fb', width: w,
     margin: { l:10, r:10, t:50, b:10 }, height: 340, dragmode: 'pan',
-    legend: { title: { text: 'Region:' }, orientation: 'h', x: 0.5, y: 1.02, xanchor: 'center', yanchor: 'bottom', bgcolor: 'rgba(0,0,0,0)', borderwidth: 0, font: { size: 11 } },
+    legend: { title: { text: 'Region:' }, orientation: 'h', x: 0.5, y: 1.02, xanchor: 'center', yanchor: 'bottom', bgcolor: 'rgba(0,0,0,0)', borderwidth: 0, font: { size: 11 }, itemwidth: 80 },
   };
 }
 
@@ -242,7 +242,7 @@ function buildBarLayout(nCultures) {
     legend: {
       title: { text: 'Constellation Type:' }, orientation: 'h',
       x: 0.5, y: 1.02, xanchor: 'center', yanchor: 'bottom',
-      bgcolor: 'rgba(0,0,0,0)', borderwidth: 0, font: { size: 11 },
+      bgcolor: 'rgba(0,0,0,0)', borderwidth: 0, font: { size: 11 }, itemwidth: 100,
     },
     xaxis: {
       title: viewMode === 'pct' ? 'Share (%)' : 'Constellation Count',
