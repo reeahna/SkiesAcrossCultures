@@ -273,10 +273,12 @@
   .vis-slides {
     position: relative;
     width: 100%;
+    overflow: hidden;
   }
 
   .vis-slide {
     display: none;
+    width: 100%;
   }
 
   .vis-slide.active {
@@ -869,7 +871,7 @@
 
           <!-- Slide 0: Combined Overview -->
           <div class="vis-slide active" data-index="0">
-            <div class="vis-frame" style="height:auto;">
+            <div class="vis-frame" style="height:auto;max-height:600px;overflow:hidden;">
               <img src="Combined_Visual_v2.png" alt="Combined visualization overview showing all three figures together" style="width:100%;height:auto;display:block;filter:none;">
             </div>
             <div class="vis-info">
@@ -885,7 +887,7 @@
           </div>
 
           <!-- Slide 1: Geospatial -->
-          <div class="vis-slide active" data-index="0">
+          <div class="vis-slide" data-index="1">
             <div class="vis-frame">
               <iframe src="geospatial-vis.html" title="Geospatial Visualization"></iframe>
             </div>
@@ -903,7 +905,7 @@
           </div>
 
           <!-- Slide 2: Kumu -->
-          <div class="vis-slide" data-index="1">
+          <div class="vis-slide" data-index="2">
             <div class="vis-frame kumu">
               <iframe src="https://embed.kumu.io/84c89a723710f4ee478f8678c2578ba3" allowfullscreen title="Kumu Network Visualization"></iframe>
             </div>
@@ -921,7 +923,7 @@
           </div>
 
           <!-- Slide 3: Star Map -->
-          <div class="vis-slide" data-index="2">
+          <div class="vis-slide" data-index="3">
             <div class="vis-frame">
               <iframe src="star-map.html" title="Interactive Star Map"></iframe>
             </div>
